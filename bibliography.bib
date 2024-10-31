@@ -1,0 +1,467 @@
+@thesis{fischer2024,
+  type = {Bachelorarbeit Bauingenieurwesen},
+  title = {Untersuchung Unterschiedlicher {{Infiltrationsansätze}} Und {{Maßnahmenimplementierungen}} Für Hydrodynamische {{Niederschlag-Abfluss-Simulationen}} an Einer {{Beispielsenke}} in {{Berlin-Tegel}}},
+  author = {Fischer, Johanna Christiane},
+  date = {2024},
+  institution = {Technische Universität Berlin},
+  keywords = {hms,read},
+  file = {/Users/robert/Zotero/storage/5XRQLVDQ/BA_Johanna_240216.pdf}
+}
+
+@thesis{amann2021,
+  type = {mathesis},
+  title = {Application of {{Optimisation Strategies}} to {{Shallow Water Flow Simulation}}},
+  author = {Amann, Finn},
+  namea = {Hinkelmann, Reinhard and Huhnt, Wolfgang and Steffen, Lennart},
+  nameatype = {collaborator},
+  date = {2021},
+  institution = {Technische Universität Berlin},
+  doi = {10.5281/zenodo.7835525},
+  url = {https://zenodo.org/record/7835526},
+  abstract = {Abstract (EN): Numerical surface water flow models are often used by decision makers to design flood protection measures, because they offer crucial information about the flow field and temporal characteristics of potential inundations. Large scale simulations, taking multiple days to complete, may offer detailed insights, whereas a smaller scale may be necessary to create quick forecastings. This is why the computational performance and an efficient use of given resources by the numerical model must not be neglected.{$<$}br{$>$} Steffen et al. (2020) introduced a new open-source C++ framework for explicit FVM solvers called hms++. The framework includes a performance-oriented rewrite of a robust Godunov-type solver for the depth-averaged shallow water equations, originally implemented in the Java framework Hydroinformatics Modeling Systems. In this thesis, the solver is verified, a number of new traversal strategies for the edge-based flux calculation are introduced and investigated for parallel performance and scalability on shared-memory systems. Since some of the introduced patterns are based on the principle of cache blocking, a preliminary study concerning the tile size is carried out as well. The test platform was a compute node containing two sockets, each equipped with an Intel Xeon Platinum 9242, totaling 96 physical cores and 192 hardware threads.{$<$}br{$>$} The preliminary study reveals load balancing issues in the seamless block-wise traversal patterns, leading to a redesign of the approaches. Increasing the block size slightly improved the performance of the flux calculation on a large mesh set, although in total, the speed-up is somewhat diminished when summing up all computational steps involved. The study also finds that an increase of the block size does not result in any performance benefits for smaller meshes, probably due to the large amount of cache memory that is available on the test platform. In the future, more elaborate tests, involving a wider range of mesh sizes and varying numbers of utilised threads, should be carried out.{$<$}br{$>$} The parallel performance investigation shows that the introduced traversal patterns scale well, obtaining maximum speed-ups ranging between 57.52× and 67.41× for a large mesh without the use of simultaneous multithreading (SMT). On a small mesh, higher speed-ups are obtained, ranging between 77.52× and 84.09×, except for row-wise traversal patterns. These patterns exhibit signs of increasing communication overhead when increasing the core count. Enabling SMT further speeds up all patterns for up to 32 cores. SMT mitigates performance for some patterns when more cores were utilised. Overall, the fastest or next to fastest computation times were obtained with the seamless block-wise traversal pattern. The pattern also showed good scalability on all meshes, regardless of SMT.{$<$}br{$>$} Lastly, a comparative study between hms++ and the Java version is carried out. The study includes a surface runoff simulation for a rainfall event in the Alps in Austria. Results show that hms++ is up to 1.26× faster the Java version. Nevertheless, the Java version performs better than expected, which suggests that a more encapsulated approach for the computational steps may further improve the performance of hms++. Abstract (DE): Numerische Strömungsmodelle können aufschlussreiche Informationen über den räumlichen und zeitlichen Verlauf von möglichen Überflutungen bieten, weshalb sie häufig im Bereich des Hochwasserschutzes eingesetzt werden. Dabei kann die Größenordnung und Rechenzeit solcher Modelle stark variieren. Modelle von großem Ausmaß können detaillierte Erkenntnisse liefern, was jedoch oftmals mit einem Rechenaufwand von mehreren Tagen oder Wochen verbunden ist. Kleinere Größendimensionen werden beispielsweise genutzt, um schnelle Voraussagen zu fundieren. Dies sind Gründe, weshalb die Rechenzeit und effiziente Nutzung der gegebenen Ressourcen wichtige Aspekte sind, die im Entwurf eines numerischen Modells berücksichtigt werden müssen.{$<$}br{$>$} In Steffen et al. (2020) wird ein neues Open-Source Framework vorgestellt, in welchem explizite Löser für die Finite-Volumen Methode implementiert werden können. Das Framework trägt den Namen hms++ und beinhaltet u. a. eine Performance-orientierte Neuaufsetzung eines Godunov-Lösers für die tiefengemittelten Flachwassergleichungen, der ursprünglich im Java Framework Hydroinformatics Modeling Systems implementiert wurde. In dieser Arbeit wird der Löser validiert und es werden eine Reihe von Traversierungsverfahren für die kantenbasierte Flussberechnung vorgestellt und auf ihre parallele Rechenleistung und Skalierbarkeit getestet. Da manche der vorgestellten Traversierungsverfahren das Cache-Blocking Prinzip nutzen, wird eine vorläufige Parameterstudie zur Blockgröße durchgeführt. Alle Studien nutzen eine Maschine mit zwei Prozessorfassungen, die jeweils mit einem Intel Xeon Platinum 9242 ausgestattet sind, sodass insgesamt 96 Rechenkerne und 192 Hardware Threads zur Verfügung stehen.{$<$}br{$>$} Die vorläufige Studie zur Blockgröße deckt die schlechte Lastenverteilung der ursprünglich entworfenen Strategien auf, was zu einem Neuentwurf der Verfahren geführt hat. Die Blockgröße betreffend hat die Studie gezeigt, dass eine Vergrößerung die Flussberechnung auf einem großen Testgitter beschleunigt, jedoch wird die gewonnene Zeit durch das Aufsummieren mit den anderen Rechenschritten ausgeglichen. Auf einem kleineren Rechengitter konnte die Rechenleistung durch eine Blockvergrößerung nicht verbessert werden, was möglicherweise auf die große Menge des verfügbaren Cache-Speichers der Testmaschine zurückzuführen ist. Die Ergebnisse zeigen, dass weitere Untersuchungen auf einer größeren Anzahl von Gittern und genutzten Threads durchgeführt werden sollten. In der Untersuchung zur parallelen Rechenleistung zeigen die Traversierungsverfahren eine gute Skalierbarkeit und erzielen Beschleunigungsfaktoren von 57.52× bis 67.41× auf dem großen Testgitter, ohne den Einsatz von simultanem Multithreading (SMT). Für das kleine Gitter können alle Verfahren, bis auf die Row-wise-Traversierungsverfahren, sogar Faktoren zwischen 77.52× und 84.09× erzielen. Für höhere Kernanzahlen zeigen die Rowwise-Verfahren jedoch Anzeichen für einen erhöhten Kommunikations-Overhead, weshalb geringere Beschleunigungsfaktoren erzielt werden. SMT erzielt weitere Verbesserungen der Rechenleistung, solange weniger als 32 Rechenkerne genutzt werden. Wenn mehr Kerne genutzt werden, verringert SMT die Rechenleistung mancher Traversierungsverfahren. Ingesamt erzielt das Seamless Block-wise-Traversierungsverfahren die schnellsten bis zweitschnellsten Rechenzeiten und demonstriert durchweg gute Skalierbarkeit, unabhängig vom Einsatz von SMT.{$<$}br{$>$} Zuletzt wird eine Vergleichsstudie zwischen hms++ und der Java-Version durchgeführt. In der Studie wird ein Oberflächenabfluss simuliert, der auf einem realen Niederschlagsereignis basiert, das in den österreichischen Alpen im Jahr 2007 stattgefunden hat. Die Ergebnisse zeigen, dass hms++ bis zu 1.26× schneller als die Java-Version ist, sofern das Seamless Block-wise-Traversierungsverfahren genutzt wird.{$<$}br{$>$} In Zukunft sollte ein Berechnungsansatz für hms++ untersucht werden, in dem die einzelnen Berechnungsschritte stärker gekapselt sind. Als Ausgangspunkt dieser Anregung steht die Rechenleistung der Java-Version, welche höher als erwartet ist.},
+  langid = {english},
+  keywords = {discretization,discretization spatial,discretization temporal,dynamic base Δt LTS,finite volume method,forward euler,High Performance Computing,hms,load balancing,Parallel computing,SWE,uniform grid,unread},
+  file = {/Users/robert/Zotero/storage/E5HMHEM3/Amann, Finn_2021_Application of Optimisation Strategies to Shallow Water Flow Simulation.pdf}
+}
+
+@inproceedings{lennart-conf,
+  title = {Performance {{Improvement Strategies}} for an {{FVM-Based Shallow Water Flow Model}} on {{2D Structured Grids}}},
+  booktitle = {Proceedings of the 39th {{IAHR World Congress}}},
+  author = {Steffen, Lennart and Amann, Finn and Hinkelmann, Reinhard},
+  date = {2022},
+  pages = {3804--3815},
+  publisher = {{International Association for Hydro-Environment Engineering and Research (IAHR)}},
+  doi = {10.3850/IAHR-39WC252171192022753},
+  url = {https://www.iahr.org/library/infor?pid=21195},
+  abstract = {Different avenues for improving the computational performance of explicit 2D FVM simulations on structured grids are explored, using a MUSCL solver for the depth-averaged shallow water equations (SWE), written in C++. The aim is to provide an overview of possible improvement strategies and their relative impact on computational performance, measured as speedups over a baseline execution time. The key factors under consideration are parallelisation (both MIMD and SIMD) and cache utilisation. For MIMD-type parallelisation, the solver uses OpenMP and MPI, while for SIMD-type parallelisation, the linear algebra library "eigen" is employed to facilitate vectorisation. When designing a solver, the point within the algorithm at which MIMD-type parallelisation is injected has to be decided early on, as a large portion of the code depends on it. Here, three variants are compared: Firstly (1), the time marching loop can be executed in serial, with the constituting steps being individually parallelised. Secondly (2), the time marching loop can be executed in parallel, with the constituting steps being executed as a whole for each cell individually. And lastly (3), the time marching loop can be executed in parallel, with the constituting steps being executed as a whole for blocks of cells. While variant 1 allows for the elimination of redundant flux computations, it leads to poor cache utilisation due to evictions between steps. Variant 2 leads to good cache utilisation, but each flux must be calculated twice. With flux computation taking up the largest time share of the overall computation, variant 2 is the slowest of the three. For variant 3, cache utilisation, number of redundant flux computations and load balancing are all dependent on the block size. With the right block size, this variant shows the best performance. However, it arguably leads to the most complex code. Cache utilisation for variant 1 is dependent on the order in which edges are traversed during the flux computation step. Furthermore, concurrent write accesses for storing the flux computation results can be all but eliminated, if the traversal pattern is specifically designed for it. Here, a block-wise traversal pattern was found to show the best performance and scalability, while the pattern designed to eliminate concurrent write accesses proved slightly slower, likely due to load balancing issues. However, in the best case for both variants 1 and 3, variant 3 still showed a relative speedup of about 1.3x. Vectorisation of cell-based steps is relatively straightforward and has been carried out for all three variants. Enabling vectorisation for the edge-based flux computation process is more challenging. Here, vectorisation has so far only been carried out for variant 3 and produced a significant additional speedup.},
+  eventtitle = {39th {{IAHR World Congress From Snow}} to {{Sea}}},
+  isbn = {978-90-832612-1-8},
+  langid = {english},
+  keywords = {blockwise partitioning_submeshes,discretization,discretization spatial,discretization temporal,discretized SWE,dynamic base Δt LTS,finite volume method,halo_ghost cells,High Performance Computing,hms,load balancing,OpenMP,Parallel computing,read,SWE,uniform grid},
+  file = {/Users/robert/Zotero/storage/X6LS4RTV/Steffen et al. - 2022 - Performance Improvement Strategies For An Fvm-Base.pdf}
+}
+
+@article{lennart-hms,
+  title = {hms++: {{Open-source}} Shallow Water Flow Model with Focus on Investigating Computational Performance},
+  shorttitle = {hms++},
+  author = {Steffen, Lennart and Hinkelmann, Reinhard},
+  date = {2023},
+  journaltitle = {SoftwareX},
+  shortjournal = {SoftwareX},
+  volume = {22},
+  pages = {101397},
+  issn = {23527110},
+  doi = {10.1016/j.softx.2023.101397},
+  url = {https://linkinghub.elsevier.com/retrieve/pii/S2352711023000936},
+  langid = {english},
+  keywords = {blockwise partitioning_submeshes,discretization,discretization spatial,discretization temporal,dynamic base Δt LTS,finite volume method,halo_ghost cells,High Performance Computing,hms,load balancing,MPI,OpenMP,Parallel computing,read,SWE,uniform grid,useful},
+  file = {/Users/robert/Zotero/storage/PU2WR468/Steffen_Hinkelmann_2023_hms + +.pdf}
+}
+
+@inproceedings{steffen2020,
+  title = {Concepts for Performance Improvements of Shallow Water Flow Simulations},
+  booktitle = {Proceedings of the 1st {{IAHR Young Professionals Congress}}},
+  author = {Steffen, Lennart and Amann, Finn and Hinkelmann, Reinhard},
+  date = {2020},
+  location = {Online},
+  abstract = {Flow simulations with the depth-averaged shallow water equations are applicable to many naturally occurring surface water flows, such as open channel flow or floods. Improving the performance of simulation software enables a higher resolution, larger computational domain or more runs with different parameters within the same time frame, or less time required to obtain results and lower energy consumption for the same simulation. To explore avenues for performance improvements of shallow water flow simulations, an open-source C++ framework for explicit finitevolume-method solvers was designed and a robust shallow water equations solver based on a previous in -house development was implemented. First results show the expectable performance improvements from vectorisation of cell-based calculations, and preliminary tests show measurable speedups from reordering edge flux computations to reduce cache misses and locks between threads. Furthermore, a simple load rebalancing scheme for distributed computations is introduced and two load criteria are compared.},
+  eventtitle = {{{IAHR Young Professionals Congress}}},
+  isbn = {978-90-824846-6-3},
+  langid = {english},
+  keywords = {hms},
+  file = {/Users/robert/Zotero/storage/MF7VCQ45/Steffen_etal_2020.pdf}
+}
+
+@article{sanders2008,
+  title = {Integration of a Shallow Water Model with a Local Time Step},
+  author = {Sanders, Brett F.},
+  date = {2008},
+  journaltitle = {Journal of Hydraulic Research},
+  shortjournal = {Journal of Hydraulic Research},
+  volume = {46},
+  number = {4},
+  pages = {465--475},
+  issn = {0022-1686, 1814-2079},
+  doi = {10.3826/jhr.2008.3243},
+  url = {https://www.tandfonline.com/doi/full/10.3826/jhr.2008.3243},
+  langid = {english},
+  keywords = {dynamic base Δt LTS,finite volume method,local time stepping LTS,non-uniform grids,power of 2 LTS levels,read,SWE,uniform grid,useful},
+  file = {/Users/robert/Zotero/storage/XZR5ESDX/Sanders - 2008 - Integration of a shallow water model with a local .pdf}
+}
+
+@thesis{simons2020,
+  title = {A Robust High-Resolution Hydrodynamic Numerical Model for Surface Water Flow and Transport Processes within a Flexible Software Framework},
+  author = {Simons, Franz},
+  namea = {Hinkelmann, Reinhard and Molkenthin, Frank},
+  nameatype = {collaborator},
+  date = {2020},
+  institution = {Faculty VI - Planning Building Environment, Technische Universität Berlin},
+  url = {https://depositonce.tu-berlin.de/handle/11303/10689},
+  abstract = {In der Wasserwirtschaft sind Computersimulationen und numerische Methoden zu einem immer wichtigeren Werkzeug zur Entscheidungsunterstützung geworden. Sie ermöglichen es, komplexe Zusammenhänge im Wasserkreislauf zu verstehen und Vorhersagen über die zukünftige Entwicklung zu treffen. Die vorliegende Arbeit beschreibt die Entwicklung einer numerischen Modellierungssoftware, die die integrierte Simulation von Strömungs- und Transportprozessen in Oberflächengewässern ermöglicht. Um auch kleinskalige Prozesse abzubilden und die Verbesserungen der Methoden zur Erfassung hochauflösender Geländemodelle nutzen zu können, wurden numerische Methoden entwickelt, die eine robuste und hochdetaillierte Simulation von Strömungs- und Transportprozessen in urbanen und natürlichen Gebieten ermöglichen. Es wurde ein robustes numerisches Verfahren zur Lösung der Flachwassergleichungen auf Basis der Finite-Volumen-Methode implementiert, das komplexe Strömungsbedingungen (z. B. kleine Wassertiefen, Benetzen und Trockenfallen, schießenden und strömenden Abfluss, Wechselsprünge und steile Wasserstandsgradienten) beherrscht. Zusätzlich wurden die Flachwassergleichungen um den Transport von Schadstoffen und Sedimenten und ein Infiltrationsmodell auf Basis der Green-Ampt-Gleichung ergänzt. Es wurde ein numerisches Software-Framework entwickelt, das den grundlegenden Rahmen für explizite Finite-Volumen-Verfahren höherer Ordnung und robuste numerische Methoden zur Verfügung stellt. Das Softwarekonzept erlaubt eine einfache Erweiterung um weitere Prozesse und numerische Verfahren. Anhand mehrerer Validierungsrechnungen und Fallstudien, die sich mit Gerinneströmung, Niederschlags-Abfluss-Modellierung, Tracertransport, Infiltration und Sedimenttransport befassen, konnte die Eignung des Software-Frameworks und der entwickelten numerischen Verfahren nachgewiesen werden.},
+  langid = {english},
+  keywords = {dynamic base Δt LTS,finite volume method,hms,non-uniform grids,read,SWE,uniform grid,useful},
+  file = {/Users/robert/Zotero/storage/A3AIE47J/Simons - A robust high-resolution hydrodynamic numerical mo.pdf}
+}
+
+@article{dazzi2018,
+  title = {A Local Time Stepping Algorithm for {{GPU-accelerated 2D}} Shallow Water Models},
+  author = {Dazzi, Susanna and Vacondio, Renato and Dal Palù, Alessandro and Mignosa, Paolo},
+  date = {2018},
+  journaltitle = {Advances in Water Resources},
+  shortjournal = {Advances in Water Resources},
+  volume = {111},
+  pages = {274--288},
+  issn = {03091708},
+  doi = {10.1016/j.advwatres.2017.11.023},
+  url = {https://linkinghub.elsevier.com/retrieve/pii/S0309170817304311},
+  langid = {english},
+  keywords = {blockwise partitioning_submeshes,CUDA,finite volume method,GPU-acceleration,High Performance Computing,local time stepping LTS,non-uniform grids,power of 2 LTS levels,read,SWE,useful},
+  file = {/Users/robert/Zotero/storage/PU73S67W/Dazzi et al. - 2018 - A local time stepping algorithm for GPU-accelerate.pdf}
+}
+
+@article{hu2019,
+  title = {Improved {{Local Time Step}} for {{2D Shallow-Water Modeling Based}} on {{Unstructured Grids}}},
+  author = {Hu, Peng and Lei, Yunlong and Han, Jianjian and Cao, Zhixian and Liu, Huaihan and He, Zhiguo and Yue, Zhiyuan},
+  date = {2019},
+  journaltitle = {Journal of Hydraulic Engineering},
+  shortjournal = {J. Hydraul. Eng.},
+  volume = {145},
+  number = {12},
+  pages = {9},
+  issn = {0733-9429, 1943-7900},
+  doi = {10.1061/(ASCE)HY.1943-7900.0001642},
+  url = {https://ascelibrary.org/doi/10.1061/%28ASCE%29HY.1943-7900.0001642},
+  langid = {english},
+  keywords = {finite volume method,local time stepping LTS,non-uniform grids,read,SWE,useful},
+  file = {/Users/robert/Zotero/storage/MTB6BEQL/Hu et al. - 2019 - Improved Local Time Step for 2D Shallow-Water Mode.pdf}
+}
+
+@inproceedings{steffen2023,
+  title = {Decoupling {{Performance}} and {{Flexibility}} within hms++: {{A User-Friendly Shallow Water Equations Solver}} with {{Advanced Cpu Optimisations}} and an {{Extensible Design}}},
+  booktitle = {Advances in {{Hydroinformatics}}—{{SimHydro}} 2023},
+  author = {Steffen, Lennart and Zhang, Yangwei and Birke, Lena and Hinkelmann, Reinhard},
+  date = {2023},
+  publisher = {Springer Singapore},
+  location = {Chatou},
+  abstract = {The design of a hydrodynamic modelling tool called hms++ is detailed, with an emphasis on addressing key concerns for research software. These are identified as high performance on heterogeneous hardware, flexibility and extensibility of the model, ease of use for non-developers, and low maintenance requirements. By employing the linear algebra library ‘Eigen’, equations and solution algorithms in hms++ can be expressed as succinct, readable source code, while compiling to highly optimised operations on a variety of platforms. This serves as the base for a flexible framework for the finite volume method with multiple mesh types, and a solver for the shallow water equations (SWE). This solver is shown to be both accurate and highly scalable, with test cases involving more than a billion cells on 256 compute nodes, using hybrid MPI/OpenMP parallelisation, as well as vectorisation. Finally, a plugin mechanism is described, which loads program extensions at runtime, providing extensibility while minimising the need for modifications to the core code. Several existing plugins are presented, which fulfil functions ranging from implementing additional source terms, streaming data to other programs, or facilitating two-way couplings with other hydrological models.},
+  eventtitle = {{{SimHydro}} 2023: {{New}} Modelling Paradigms for Water Issues?},
+  langid = {english},
+  keywords = {blockwise partitioning_submeshes,discretization,discretization spatial,discretization temporal,discretized SWE,dynamic base Δt LTS,finite volume method,halo_ghost cells,High Performance Computing,hms,load balancing,MPI,OpenMP,Parallel computing,read,SWE,uniform grid,useful},
+  file = {/Users/robert/Zotero/storage/HQ3GGBDP/Steffen et al. - 2023 - DECOUPLING PERFORMANCE AND FLEXIBILITY WITHIN hms+.pdf}
+}
+
+@article{osher1983,
+  title = {Numerical {{Approximations}} to {{Nonlinear Conservation Laws With Locally Varying Time}} and {{Space Grids}}},
+  author = {Osher, Stanley and Sanders, Richard},
+  date = {1983},
+  doi = {10.2307/2007679},
+  url = {https://doi.org/10.2307/2007679},
+  abstract = {An explicit time differencing technique is introduced to approximate nonlinear conservation laws. This differencing technique links together an arbitrary number of space regimes containing fine and coarse time increments. Previous stability requirements, i.e. the CFL condition, placed a global bound on the size of the time increments. For scalar, monotone, approximations in one space dimension, using this variable step time differencing, convergence to the correct physical solution is proven given only a local CFL condition.},
+  langid = {english},
+  keywords = {1D,CFL condition,finite volume method,local time stepping LTS,read,useful},
+  file = {/Users/robert/Zotero/storage/HBI6NX7K/Osher and Sanders - Numerical Approximations to Nonlinear Conservation Laws With Locally Varying Time and Space Grids.pdf}
+}
+
+@article{yang2020,
+  title = {Implementation of a {{Local Time Stepping Algorithm}} and {{Its Acceleration Effect}} on {{Two-Dimensional Hydrodynamic Models}}},
+  author = {Yang, Xiyan and An, Wenjie and Li, Wenda and Zhang, Shanghong},
+  date = {2020},
+  journaltitle = {Water},
+  shortjournal = {Water},
+  volume = {12},
+  number = {4},
+  pages = {1148},
+  issn = {2073-4441},
+  doi = {10.3390/w12041148},
+  url = {https://www.mdpi.com/2073-4441/12/4/1148},
+  abstract = {The engineering applications of two-dimensional (2D) hydrodynamic models are restricted by the enormous number of meshes needed and the overheads of simulation time. The aim of this study is to improve computational efficiency and optimize the balance between the quantity of grids used in and the simulation accuracy of 2D hydrodynamic models. Local mesh refinement and a local time stepping (LTS) strategy were used to address this aim. The implementation of the LTS algorithm on a 2D shallow-water dynamic model was investigated using the finite volume method on unstructured meshes. The model performance was evaluated using three canonical test cases, which discussed the influential factors and the adaptive conditions of the algorithm. The results of the numerical tests show that the LTS method improved the computational efficiency and fulfilled mass conservation and solution accuracy constraints. Speedup ratios of between 1.3 and 2.1 were obtained. The LTS scheme was used for navigable flow simulation of the river reach between the Three Gorges and Gezhouba Dams. This showed that the LTS scheme is effective for real complex applications and long simulations and can meet the required accuracy. An analysis of the influence of the mesh refinement on the speedup was conducted. Coarse and refined mesh proportions and mesh scales observably affected the acceleration effect of the LTS algorithm. Smaller proportions of refined mesh resulted in higher speedup ratios. Acceleration was the most obvious when mesh scale differences were large. These results provide technical guidelines for reducing computational time for 2D hydrodynamic models on non-uniform unstructured grids.},
+  langid = {english},
+  keywords = {dynamic base Δt LTS,finite volume method,local time stepping LTS,non-uniform grids,power of 2 LTS levels,read,SWE},
+  file = {/Users/robert/Zotero/storage/8YG5U63C/Yang et al. - 2020 - Implementation of a Local Time Stepping Algorithm .pdf}
+}
+
+@article{crossley2005,
+  title = {Time Accurate Local Time Stepping for the Unsteady Shallow Water Equations},
+  author = {Crossley, A. J. and Wright, N. G.},
+  date = {2005},
+  journaltitle = {International Journal for Numerical Methods in Fluids},
+  volume = {48},
+  number = {7},
+  pages = {775--799},
+  doi = {10.1002/fld.956},
+  abstract = {Two time accurate local time stepping (LTS) strategies originally developed for the Euler equations are presented and applied to the unsteady shallow water equations of open channel flow. Using the techniques presented allows individual cells to be advanced to different points in time, in a time accurate fashion. The methods shown are incorporated into an explicit finite volume version of Roe's scheme which is implemented in conjunction with an upwind treatment for the source terms. A comparison is made between the results obtained using the conventional time stepping approach and the two LTS methods through a series of test cases. The results illustrate a number of benefits of using LTS which included reduced run times and improved solution accuracy. In addition it is shown how using an upwind source term treatment can be beneficial for flows dominated by the geometry. Copyright © 2005 John Wiley \& Sons, Ltd.},
+  keywords = {1D,finite volume method,local time stepping LTS,read,SWE,useful},
+  file = {/Users/robert/Zotero/storage/X4A74SAZ/Crossley and Wright - 2005 - Time accurate local time stepping for the unsteady.pdf}
+}
+
+@inproceedings{lucy2007,
+  title = {Inside the {{Mac OS X Kernel}}},
+  author = {{Lucy}},
+  date = {2007},
+  location = {Berlin},
+  url = {https://fahrplan.events.ccc.de/congress/2007/Fahrplan/attachments/986_inside_the_mac_osx_kernel.pdf},
+  urldate = {2024-05-20},
+  eventtitle = {24th {{Chaos Communication Congress 24C3}}},
+  langid = {english},
+  keywords = {read},
+  file = {/Users/robert/Zotero/storage/A7ME8FWN/Inside the Mac OS X Kernel.pdf}
+}
+
+@online{statcounter2023,
+  title = {Desktop {{Operating System Market Share Worldwide}}},
+  author = {{StatCounter}},
+  url = {https://gs.statcounter.com/os-market-share/desktop/worldwide/2023},
+  urldate = {2024-05-20},
+  abstract = {This graph shows the market share of desktop operating systems worldwide based on over 5 billion monthly page views.},
+  langid = {english},
+  organization = {StatCounter Global Stats},
+  keywords = {read},
+  file = {/Users/robert/Zotero/storage/4BTMQQCF/2023.html}
+}
+
+@online{linux2017,
+  title = {Linux {{Runs All}} of the {{World}}’s {{Fastest Supercomputers}}},
+  author = {{The Linux Foundation}},
+  date = {2017},
+  url = {https://www.linuxfoundation.org/blog/blog/linux-runs-all-of-the-worlds-fastest-supercomputers},
+  urldate = {2024-06-11},
+  organization = {linuxfoundation.org},
+  keywords = {read},
+  file = {/Users/robert/Zotero/storage/KREUICWB/linux-runs-all-of-the-worlds-fastest-supercomputers.html}
+}
+
+@online{apple-archdiff,
+  title = {Addressing {{Architectural Differences}} in {{Your macOS Code}}},
+  author = {{Apple Inc.}},
+  url = {https://developer.apple.com/documentation/apple-silicon/addressing-architectural-differences-in-your-macos-code},
+  urldate = {2024-05-31},
+  abstract = {Fix problems that stem from architectural differences between Apple silicon and Intel-based Mac computers.},
+  langid = {american},
+  organization = {Apple Developer Documentation},
+  keywords = {read},
+  file = {/Users/robert/Zotero/storage/XT3W9KVP/addressing-architectural-differences-in-your-macos-code.html}
+}
+
+@online{apple-arm64code,
+  title = {Writing {{ARM64}} Code for {{Apple}} Platforms},
+  author = {{Apple Inc.}},
+  url = {https://developer.apple.com/documentation/xcode/writing-arm64-code-for-apple-platforms},
+  urldate = {2024-05-31},
+  abstract = {Create 64-bit ARM assembly language instructions that adhere to the application binary interface (ABI) that Apple platforms support.},
+  langid = {american},
+  organization = {Apple Developer Documentation},
+  keywords = {read},
+  file = {/Users/robert/Zotero/storage/2WFFQGQW/writing-arm64-code-for-apple-platforms.html}
+}
+
+@online{apple-porting,
+  title = {Porting {{Your macOS Apps}} to {{Apple Silicon}}},
+  author = {{Apple Inc.}},
+  url = {https://developer.apple.com/documentation/apple-silicon/porting-your-macos-apps-to-apple-silicon},
+  urldate = {2024-05-31},
+  abstract = {Create a version of your macOS app that runs on both Apple silicon and Intel-based Mac computers.},
+  langid = {american},
+  organization = {Apple Developer Documentation},
+  keywords = {read},
+  file = {/Users/robert/Zotero/storage/73YDD43L/porting-your-macos-apps-to-apple-silicon.html}
+}
+
+@book{hinkelmann2005,
+  title = {Efficient {{Numerical Methods}} and {{Information-Processing Techniques}} for {{Modeling Hydro-}} and {{Environmental Systems}}},
+  author = {Hinkelmann, Reinhard},
+  date = {2005},
+  series = {Lecture {{Notes}} in {{Applied}} and {{Computational Mechanics}}},
+  volume = {21},
+  publisher = {Springer-Verlag},
+  location = {Berlin/Heidelberg},
+  doi = {10.1007/3-540-32379-1},
+  url = {http://link.springer.com/10.1007/3-540-32379-1},
+  urldate = {2024-06-11},
+  isbn = {978-3-540-24146-1},
+  langid = {english},
+  keywords = {Environment Water,groundwater,Groundwater Flow,hydrogeology,Information-Processing Techniques,model,modeling,numerical methods,simulation,Transport,Transport Processes,Two-Phase Flow Processes,unread},
+  file = {/Users/robert/Zotero/storage/WIF8VCS7/2005 - Efficient Numerical Methods and Information-Proces.pdf}
+}
+
+@article{MUSCL1979,
+  title = {Towards the Ultimate Conservative Difference Scheme. {{V}}. {{A}} Second-Order Sequel to {{Godunov}}'s Method},
+  author = {family=Leer, given=Bram, prefix=van, useprefix=true},
+  date = {1979},
+  journaltitle = {Journal of Computational Physics},
+  shortjournal = {Journal of Computational Physics},
+  volume = {32},
+  number = {1},
+  pages = {101--136},
+  issn = {0021-9991},
+  doi = {10.1016/0021-9991(79)90145-1},
+  url = {https://www.sciencedirect.com/science/article/pii/0021999179901451},
+  urldate = {2024-06-14},
+  abstract = {A method of second-order accuracy is described for integrating the equations of ideal compressible flow. The method is based on the integral conservation laws and is dissipative, so that it can be used across shocks. The heart of the method is a one-dimensional Lagrangean scheme that may be regarded as a second-order sequel to Godunov's method. The second-order accuracy is achieved by taking the distributions of the state quantities inside a gas slab to be linear, rather than uniform as in Godunov's method. The Lagrangean results are remapped with least-squares accuracy onto the desired Euler grid in a separate step. Several monotonicity algorithms are applied to ensure positivity, monotonicity and nonlinear stability. Higher dimensions are covered through time splitting. Numerical results for one-dimensional and two-dimensional flows are presented, demonstrating the efficiency of the method. The paper concludes with a summary of the results of the whole series “Towards the Ultimate Conservative Difference Scheme.”},
+  file = {/Users/robert/Zotero/storage/FHPS4HWN/0021999179901451.html}
+}
+
+@article{toro1994,
+  title = {Restoration of the Contact Surface in the {{HLL-Riemann}} Solver},
+  author = {Toro, E. F. and Spruce, M. and Speares, W.},
+  date = {1994},
+  journaltitle = {Shock Waves},
+  shortjournal = {Shock Waves},
+  volume = {4},
+  number = {1},
+  pages = {25--34},
+  issn = {0938-1287, 1432-2153},
+  doi = {10.1007/BF01414629},
+  url = {http://link.springer.com/10.1007/BF01414629},
+  urldate = {2024-06-14},
+  abstract = {The missing contact surface in the approximate Riemann solver of Harten, Lax, and van Leer is restored. This is achieved following the same principles as in the original solver. We also present new ways of obtaining wave-speed estimates. The resulting solver is as accurate and robust as the exact Riemann solver, but it is simpler and computationally more efficient than the latter, particulaly for non-ideal gases. The improved Riemann solver is implemented in the second-order WAF method and tested for one-dimensional problems with exact solutions and for a two-dimensional problem with experimental results.},
+  langid = {english},
+  file = {/Users/robert/Zotero/storage/ZTVUGWQX/Toro et al. - 1994 - Restoration of the contact surface in the HLL-Riem.pdf}
+}
+
+@online{opengroup2024,
+  title = {{{macOS}} Version 14.0 {{Sonoma UNIX}} 03},
+  author = {{The Open Brand Register}},
+  url = {https://www.opengroup.org/openbrand/register/brand3700.htm},
+  urldate = {2024-06-14},
+  organization = {The Open Brand Register},
+  keywords = {read},
+  file = {/Users/robert/Zotero/storage/VIMWDJLF/brand3700.html}
+}
+
+@article{crossley2003,
+  title = {Local {{Time Stepping}} for {{Modeling Open Channel Flows}}},
+  author = {Crossley, Amanda J. and Wright, Nigel G. and Whitlow, Chris D.},
+  date = {2003},
+  journaltitle = {Journal of Hydraulic Engineering},
+  shortjournal = {J. Hydraul. Eng.},
+  volume = {129},
+  number = {6},
+  pages = {455--462},
+  issn = {0733-9429, 1943-7900},
+  doi = {10.1061/(ASCE)0733-9429(2003)129:6(455)},
+  url = {https://ascelibrary.org/doi/10.1061/%28ASCE%290733-9429%282003%29129%3A6%28455%29},
+  urldate = {2024-06-20},
+  langid = {english},
+  keywords = {1D,finite volume method,first-order scheme,frozen flux LTS,local time stepping LTS,non-uniform grids,open channel flow,power of 2 LTS levels,read,SWE,uniform grid,useful},
+  file = {/Users/robert/Zotero/storage/TW7BVQUN/Crossley et al. - 2003 - Local Time Stepping for Modeling Open Channel Flow.pdf}
+}
+
+@inproceedings{crossley1999,
+  title = {Locally {{Adapted Time Steps}} for {{Open Channel Flow}} with {{Transitions}}},
+  booktitle = {Proceedings of the 28th {{IAHR World Congress}} ({{Graz}}, 1999)},
+  author = {Wright, Nigel G. and Whitlow, Chris D. and Crossley, Amanda J.},
+  date = {1999},
+  location = {Graz},
+  url = {https://www.iahr.org/library/infor?pid=13930},
+  urldate = {2024-06-20},
+  abstract = {This paper presents two different methods for using local timesteps in the solution of open channel flows. These should be particularly advantageous when combined with spatial adaptivity. The methods are demonstrated in the context of a Riemann solver based method for the time dependent one-dimensional St. Venant equations. The resulting algorithm is applied to three test cases to show that run times are reduced with no significant loss of accuracy. The test cases cover steady and unsteady cases and the effects of varying bed slope, friction and consequent flow transitions.},
+  eventtitle = {28th {{IAHR World Congress}}},
+  langid = {english},
+  keywords = {1D,euler,frozen flux LTS,local time stepping LTS,non-uniform grids,open channel flow,power of 2 LTS levels,read,SWE,uniform grid},
+  file = {/Users/robert/Zotero/storage/L7LLTJN4/Wright - LOCALLY ADAPTED TIME STEPS FOR OPEN CHANNEL FLOW W.pdf}
+}
+
+@article{zhang1994a,
+  title = {Time-Accurate Local Time Stepping Method Based on Flux Updating},
+  author = {Zhang, X. D. and Trepanier, J.-Y. and Reggio, M. and Camarero, R.},
+  date = {1994},
+  journaltitle = {AIAA Journal},
+  doi = {10.2514/3.12195},
+  url = {https://arc.aiaa.org/doi/10.2514/3.12195},
+  urldate = {2024-06-21},
+  langid = {english},
+  keywords = {2D,frozen flux LTS,local time stepping LTS},
+  file = {/Users/robert/Zotero/storage/445C3TFI/Zhang et al. - 1994 - Time-accurate local time stepping method based on .pdf;/Users/robert/Zotero/storage/X7XXUET4/3.html}
+}
+
+@inproceedings{zhang1994b,
+  title = {A New Local Time Stepping Approach for the Unsteady {{Euler}} Equations},
+  booktitle = {32nd {{Aerospace Sciences Meeting}} and {{Exhibit}}},
+  author = {Zhang, X. D. and Trepanier, J.-Y. and Reggio, M. and Camarero, R.},
+  date = {1994},
+  series = {Aerospace {{Sciences Meetings}}},
+  publisher = {{American Institute of Aeronautics and Astronautics}},
+  location = {Reno, NV},
+  doi = {10.2514/6.1994-525},
+  url = {https://arc.aiaa.org/doi/10.2514/6.1994-525},
+  urldate = {2024-06-21},
+  keywords = {2D,frozen flux LTS,local time stepping LTS},
+  file = {/Users/robert/Zotero/storage/DTLU2GNH/Zhang et al. - 1994 - A new local time stepping approach for the unstead.pdf}
+}
+
+@article{kleb1992,
+  title = {Temporal Adaptive {{Euler}}/{{Navier-Stokes}} Algorithm Involving Unstructured Dynamic Meshes},
+  author = {Kleb, W. L. and Batina, J. T. and Williams, M. H.},
+  date = {1992},
+  journaltitle = {AIAA Journal},
+  shortjournal = {AIAA Journal},
+  volume = {30},
+  number = {8},
+  pages = {1980--1985},
+  issn = {0001-1452, 1533-385X},
+  doi = {10.2514/3.11169},
+  url = {https://arc.aiaa.org/doi/10.2514/3.11169},
+  urldate = {2024-06-23},
+  abstract = {A temporal adaptive algorithm for the time integration of the two-dimensional Euler or Navier-Stokes equations is presented. The flow solver involves an upwind flux-split spatial discretization for the convective terms and central differencing for the shear-stress and heat flux terms on an unstructuredmesh of triangles. The temporal-adaptive algorithm is a time-accurate integration procedure that allows flows with high spatial and temporal gradients to be computed efficiently by advancing each grid cell near its maximum allowable time step. Results indicate that an appreciable computational savings can be achieved for both inviscid and viscous unsteady airfoil problems using unstructured meshes without degrading spatial or temporal accuracy.},
+  langid = {english},
+  keywords = {local time stepping LTS,power of 2 LTS levels},
+  file = {/Users/robert/Zotero/storage/K4MUR6GQ/Kleb et al. - 1992 - Temporal adaptive EulerNavier-Stokes algorithm in.pdf}
+}
+
+@article{gnedin2018,
+  title = {Enforcing the {{Courant}}–{{Friedrichs}}–{{Lewy}} Condition in Explicitly Conservative Local Time Stepping Schemes},
+  author = {Gnedin, Nickolay Y. and Semenov, Vadim A. and Kravtsov, Andrey V.},
+  date = {2018},
+  journaltitle = {Journal of Computational Physics},
+  shortjournal = {Journal of Computational Physics},
+  volume = {359},
+  pages = {93--105},
+  issn = {0021-9991},
+  doi = {10.1016/j.jcp.2018.01.008},
+  url = {https://www.sciencedirect.com/science/article/pii/S0021999118300184},
+  urldate = {2024-06-23},
+  abstract = {An optimally efficient explicit numerical scheme for solving fluid dynamics equations, or any other parabolic or hyperbolic system of partial differential equations, should allow local regions to advance in time with their own, locally constrained time steps. However, such a scheme can result in violation of the Courant–Friedrichs–Lewy (CFL) condition, which is manifestly non-local. Although the violations can be considered to be “weak” in a certain sense and the corresponding numerical solution may be stable, such calculation does not guarantee the correct propagation speed for arbitrary waves. We use an experimental fluid dynamics code that allows cubic “patches” of grid cells to step with independent, locally constrained time steps to demonstrate how the CFL condition can be enforced by imposing a constraint on the time steps of neighboring patches. We perform several numerical tests that illustrate errors introduced in the numerical solutions by weak CFL condition violations and show how strict enforcement of the CFL condition eliminates these errors. In all our tests the strict enforcement of the CFL condition does not impose a significant performance penalty.},
+  keywords = {CFL condition,Computational fluid dynamics,local time stepping LTS,neighbor propagation smoothing,Numerical methods,Partial differential equations,unread},
+  file = {/Users/robert/Zotero/storage/PMC26QF9/1-s2.0-S0021999118300184-main.pdf;/Users/robert/Zotero/storage/CP3E9F96/S0021999118300184.html}
+}
+
+@thesis{adelmann2022,
+  type = {Bachelorarbeit Bauingenieurwesen},
+  title = {Validierung eines Simulationsprogramms für die Flachwassergleichungen},
+  author = {Adelmann, Helen Marie},
+  date = {2022},
+  institution = {Technische Universität Berlin},
+  location = {Berlin},
+  doi = {10.5281/zenodo.7835444},
+  url = {https://zenodo.org/records/7835444},
+  urldate = {2024-07-25},
+  abstract = {Abstract (EN): Numerical simulations are an important tool in water management because the surface flow involves very complex spatial and temporal properties and relationships. Therefore, such numerical programs are used for example for the decision making in flood protection measures. This thesis deals with the numerical model hms++ which was presented in Steffen et al. (2020). In this framework, an explicit robust solver for the depth-averaged shallow water equation is implemented. The open-source framework uses the finite volume method for a high-resolution approximated Riemann solver of the Godunov type. The logic of the solver of the shallow water equation in hms++ was taken from the already existing simulation program hms (Busse et al., 2007). The goal of hms++ is more time and resource efficient calculations. In this thesis, four simulation cases are treated. Specifically, cases that have an analytical solution were chosen to compare with the computed results of hms++ and hms. The solutions of the two simulation programs are very similar and well approximate to the analytical solution. By using four different surface flow simulations, dealing with a channel flow with hydraulic jump, a discontinuity of water depth, a rainfall-runoff process and a rotating flow in a bowl, the validation of the hms++ framework in this scope can be successfully demonstrated. Abstract (DE): Numerische Simulationen sind in der Wasserwirtschaft ein wichtiges Hilfsmittel, da Oberflächenströmungen sehr komplexe räumliche und zeitliche Eigenschaften und Zusammenhänge beinhalten. Somit dienen solche numerischen Programme beispielsweise der Entscheidungsfindung bei Hochwasserschutzmaßnahmen. Diese Arbeit befasst sich mit dem numerischen Modell hms++, welches in Steffen et al. (2020) vorgestellt wurde. In diesem ist ein expliziter, robuster Löser für die tiefengemittelte Flachwassergleichung implementiert. Das Open-Source Framework nutzt die Finite-Volumen-Methode für den hochauflösenden approximierten Riemann-Löser vom Typ Godunov. Die Logik des Lösers der Flachwassergleichung in hms++ wurde von dem bereits existierenden Simulationsprogramm hms (Busse et al., 2007) übertragen. Das Ziel von hms++ sind zeit- und ressourceneffizientere Berechnungen. In dieser Arbeit werden vier Simulationsfälle behandelt. Es wurden speziell Fälle ausgewählt, die eine analytische Lösung besitzen, um diese mit den berechneten Ergebnissen von hms++ und hms zu vergleichen. Die Lösungen der beiden Simulationsprogramme sind sehr ähnlich und nähern sich gut dem Verlauf der analytischen Lösung an. Durch vier verschiedene Oberflächenströmungssimulationen, die sich mit einer Gerinneströmung mit Wechselsprung, einer Diskontinuität der Wassertiefe, einem Niederschlag-Abfluss-Prozess und einer rotierenden Strömung in einem Becken befassen, kann die Validierung des Frameworks hms++ für diesen Anwendungsbereich erfolgreich gezeigt werden.},
+  langid = {deu},
+  keywords = {Finite Volume Method,Model Validation,Shallow Water Equations},
+  file = {/Users/robert/Zotero/storage/XGE4BVL7/Adelmann - 2022 - Validierung eines Simulationsprogramms für die Flachwassergleichungen.pdf}
+}
+
+@article{nash1970,
+  title = {River Flow Forecasting through Conceptual Models Part {{I}} — {{A}} Discussion of Principles},
+  author = {Nash, J. E. and Sutcliffe, J. V.},
+  date = {1970},
+  journaltitle = {Journal of Hydrology},
+  shortjournal = {Journal of Hydrology},
+  volume = {10},
+  number = {3},
+  pages = {282--290},
+  issn = {0022-1694},
+  doi = {10.1016/0022-1694(70)90255-6},
+  url = {https://www.sciencedirect.com/science/article/pii/0022169470902556},
+  urldate = {2024-07-27},
+  abstract = {The principles governing the application of the conceptual model technique to river flow forecasting are discussed. The necessity for a systematic approach to the development and testing of the model is explained and some preliminary ideas suggested.},
+  file = {/Users/robert/Zotero/storage/Q6F6ZK29/0022169470902556.html}
+}
+
+@online{eigen2021,
+  title = {Eigen 3.4},
+  date = {2021-08-18},
+  url = {https://www.eigen.tuxfamily.org/index.php?title=3.4#New_backends},
+  urldate = {2024-08-05},
+  file = {/Users/robert/Zotero/storage/C4B3W7W4/index.html}
+}

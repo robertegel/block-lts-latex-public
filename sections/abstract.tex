@@ -1,0 +1,26 @@
+% LTeX: enabled=false
+%\section*{\IfLanguageName{english}{Abstract}{Zusammenfassung}}\label{sec:abstract}
+\section*{Abstract}\label{sec:abstract}
+% - Cconclusion kopieren
+% - Drum herum beschreiben, was ist hms, warum wird was gemacht
+% - was ist LTS, GTS
+% - unterschied frozen flux / frozen block
+% - 3/4 seite max
+% LTeX: enabled=true
+
+A \gls{lts} scheme for the \gls{hms}, a \acrlong{swe} solver developed at the Chair of Water Resources Management and Modelling of Hydrosystems, is introduced in this thesis.
+A central goal of the development of \gls{hms} has been to increase computational performance.
+Thus, the extension of \gls{hms} with an \gls{lts} scheme aligns well with this goal, as long as it 
+% does not compromise 
+is compatible with existing optimization methods within \gls{hms}.
+This is why the proposed scheme operates on blocks of cells, instead of individual cells. 
+It adopts the approach of reducing the amount of flux computations by \emph{freezing} flux vectors and reusing them according to a local stability criterion. 
+This criterion is based on choosing the minimum local time step inside a block as the block's allowable time step, enabling the block's cells to be computed using parallel methods.
+Thus, the proposed scheme is named \acrlong*{frozen-block-LTS}.
+Reuse of previously computed fluxes is accomplished by adaptively scaling them according to the current global time step.
+Initial problems with stability, as well as the synchronization of some adjacent blocks, were mitigated by a revision of the criterion for performing scalar flux computations and the introduction of neighbor propagation.
+Except for one outlier case, \acrlong*{frozen-block-LTS} has shown good stability and exhibits comparable accuracy to the \gls{gts} scheme currently in use.
+In an analytical benchmark, \acrlong*{frozen-block-LTS} was able to reduce simulation runtime by more than \SI{30}{\percent}, while in a practical rainfall-runoff scenario, runtime reductions greater than \SI{20}{\percent} were achieved.
+
+
+%https://wordvice.com/which-tense-should-be-used-in-abstracts-past-or-present/

@@ -1,0 +1,67 @@
+\section{Cross-Platform Portability}\label{sec:porting-background}
+
+As \gls{hms} has been developed to run on Linux natively, ports to other operating systems were previously available as Docker containers only.
+This can lead to reduced performance due to the need of running the container on a Linux kernel, which is virtualized on Windows and macOS machines.
+% This can lead to reduced performance due to the container overhead.
+% Docker uses the Linux kernel from "Windows subsystem for Linux", so it's not like a virtual machine, but rather almost native.
+% "The newest version of WSL uses a subset of Hyper-V architecture to enable its virtualization." from https://learn.microsoft.com/en-us/windows/wsl/faq
+
+Linux is the de facto standard operating system of scientific computing, especially \gls{hpc} clusters heavily rely on Linux operating systems \autocite{linux2017}.
+Despite constantly gaining market share in the world of desktop computers, Linux has not yet found its way to average users \autocite{statcounter2023}. To increase compatibility with more student's personal devices, \gls{hms} was ported to macOS.
+
+Since Darwin, macOS's underlying core OS, is POSIX certified \autocite{lucy2007,opengroup2024}, porting Open-Source software written for Linux (mostly POSIX compliant) is relatively simple.
+This holds true, especially in comparison to Windows, which is mostly incompatible with many practices in UNIX-like or UNIX systems like Linux and macOS.
+
+\gls{hms} is written in C++ (hence the name), a language widely used across numerous operating systems.
+Although C++ is heavily standardized, compiler behavior can vary intensely. Additionally, operating systems offer optimized system libraries or \glspl{sdk}, which may differ slightly as well. These are usually utilized by higher level libraries like \texttt{Eigen} or the program itself.
+To eliminate the risk of diverging compiler behavior, \gls{gcc} was chosen over Apple \texttt{clang}, the default C/C++ compiler for macOS.
+
+There are differences between \gls{arm} and the \gls{x86}, which, despite having been minimized by \gls{sdk} developers, should still be addressed when writing portable code \autocite{apple-archdiff,apple-arm64code}.
+This applies to software that is highly optimized for \gls{x86}, e.g., because it:
+``\begin{enumerate*}[label=(\roman*)]
+	\item Interacts with third-party libraries you don't own.
+	\item Interacts with the kernel or hardware.
+	\item Relies on specific [\gls{gpu}] behaviors.
+	\item Contains assembly instructions.
+	\item Manages threads or optimizes your app's multithreaded behavior.
+	\item Contains hardware-specific assumptions or performance optimizations.
+\end{enumerate*}'' \autocite{apple-porting}.
+Only the first point applies to \gls{hms}, since it uses \gls{omp} for managing parallel execution and relies on \texttt{Eigen} for its performance optimized linear algebra operations.
+% , \note{both of which have already been successfully ported to \gls{arm} architecture (Can I simply say that or do I need to provide a source?).}
+\gls{omp} is a compiler-level feature and readily available in \gls{gcc} for \gls{arm}, while \texttt{Eigen} similarly has mature support for \gls{arm} since version 3.4 \autocite{eigen2021}.
+In conclusion, porting \gls{hms} from \gls{x86} to \gls{arm} is rather trivial because it utilizes high-level abstractions provided by well-maintained and widely used third-party frameworks instead of applying low-level optimizations by itself.
+
+
+\subsection*{Specifics of Porting \gls{hms} to macOS}\label{sec:porting-steps}
+
+Versions used in the context of this thesis:
+\begin{itemize}
+  \item macOS 14.5 for arm64/Apple Silicon
+  \item \gls{gcc} 13.2.0
+  \item MacOSX14.2 \gls{sdk} 
+  \item Apple XCode Command Line Tools 15.1.0
+  \item Open MPI 5.0.3
+\end{itemize}
+
+% LTeX: enabled=false
+Steps undertaken to enable the execution of \gls{hms} under macOS:
+
+\begin{itemize}
+  \item \texttt{Eigen::Index} is a type alias for \texttt{long} under macOS (both \gls{gcc} and \texttt{clang}), not \texttt{long long} → use of \texttt{static\_cast} in vtk/xml related functions (conditional changes using compile time flags, therefore there are no type casts on Linux)
+  \item add dependencies in cmake (\texttt{mpiHelpers} requires \texttt{io\_util})
+  \item use of shared library linkage, because static linkage did not work in some cases, since \texttt{gcc} does not install its own linker on macOS, but uses the one provided with XCode CLI Tools instead
+        % \begin{itemize}
+        %   \item \texttt{hms}
+        %   \item \texttt{eigen-fmt}
+        %   \item \texttt{vtk}
+        % \end{itemize}
+  \item extend cache info functionality to macOS commands
+  \item adapt existing bash scripts
+        \begin{itemize}
+          \item use Unix Makefiles for Mac
+          \item adapt \texttt{get\_n\_threads\_build()}
+          \item set \texttt{CXX=g++-13} and \texttt{CC=gcc-13} flags (otherwise \gls{gcc}-wrappers around \texttt{clang} is used) 
+          \item set \texttt{-ld\_classic} flag (for Apple \texttt{clang} version $\geq$ 15)
+          \item add \texttt{install\_mac.sh} for easy setup including installation of dependencies
+        \end{itemize}
+\end{itemize}

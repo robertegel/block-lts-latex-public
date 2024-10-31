@@ -1,0 +1,37 @@
+\sisetup{
+  table-format=1.2e+1,
+}
+
+\begin{tabular}{
+  rS[round-mode=places,round-precision=2]
+  % S[round-mode=places,round-precision=2,table-format=2.2,table-space-text-post={\,\%}]<{\,\%}
+  S[round-mode=places,round-precision=2,table-format=2.2]
+  S[round-mode=places,round-precision=2]
+  % S[round-mode=places,round-precision=2,table-format=2.2,table-space-text-post={\,\%}]<{\,\%}
+  S[round-mode=places,round-precision=2,table-format=2.2]
+  }
+  % \begin{tabular}{rcSSrcSSr} 
+  \toprule
+   & \multicolumn{2}{c}{\gls{gts}} & \multicolumn{2}{c}{\gls{lts}} \\
+  \cmidrule(r){2-3} \cmidrule(r){4-5}
+
+                           & \mc{absolute [\si\second]} & \mc{absolute [\si\percent]} & \mc{absolute [\si\second]} & \mc{absolute [\si\percent]} \\
+  \midrule
+  output                   & 3.100e-4                   & 0.026                       & 3.900e-4                   & 0.036                       \\
+  variable initialization  & 8.828e-2                   & 7.266                       & 9.382e-2                   & 8.644                       \\
+  updating source terms    & 0.000e0                    & 0.000                       & 2.000e-6                   & 0.000                       \\
+  full flux computation    & 8.858e-1                   & 72.912                      & 7.532e-1                   & 69.395                      \\
+  scalar flux computation  & 0.000e0                    & 0.000                       & 2.539e-3                   & 0.234                       \\
+  block flux memory access & 0.000e0                    & 0.000                       & 1.267e-2                   & 1.167                       \\
+  mass sources             & 9.400e-5                   & 0.008                       & 8.300e-5                   & 0.008                       \\
+  friction                 & 1.195e-1                   & 9.837                       & 1.044e-1                   & 9.620                       \\
+  new state                & 7.566e-2                   & 6.228                       & 7.915e-2                   & 7.293                       \\
+  time step                & 4.347e-2                   & 3.578                       & 3.688e-2                   & 3.398                       \\
+  updating boundary        & 7.190e-4                   & 0.059                       & 8.130e-4                   & 0.075                       \\
+  plugins                  & 2.000e-6                   & 0.000                       & 1.000e-6                   & 0.000                       \\
+  synchronization          & 3.460e-4                   & 0.028                       & 4.190e-4                   & 0.039                       \\
+  other                    & 7.150e-4                   & 0.059                       & 1.000e-3                   & 0.092                       \\
+  \midrule
+  sum                      & 1.215e0                    & \mc{}                       & 1.085e0                    & \mc{}                       \\
+  \bottomrule
+\end{tabular}

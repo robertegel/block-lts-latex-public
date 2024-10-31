@@ -1,0 +1,62 @@
+\thispagestyle{coverpage}
+
+\KOMAoption{headinclude}{true}
+\recalctypearea
+
+% the separation space between header and text makes spacing uneven, so we remove it for this page
+\vspace*{-\headsep}
+
+\begin{center}
+	\color[RGB]{16,56,88}
+	\sffamily
+	\vspace{\stretch{2}}
+	
+%	\hspace{26mm}
+%	\begin{minipage}[t]{0.64\textwidth}
+%		\large
+%		\name
+%		
+%		\huge
+%		\thesistitle
+%		
+%		%	\spacedhrule
+%		\large
+%		\thesiscategory
+%	\end{minipage}
+
+	\large
+	\name
+	
+	\huge
+	\thesistitle
+	
+%	either the rule or the skip, not both
+%	\spacedhrule
+	\medskip
+	
+	\large
+	\thesiscategory
+	
+	\vspace{\stretch{2}}
+	
+	\includegraphics[width=0.7\textwidth]{../typst/heatmaps/moabit_lts_fo_cover.pdf}
+	
+	\vspace{\stretch{1}}
+	
+%	\hspace{26mm}
+	\normalsize
+	\begin{tabular}{@{}ll}
+		\IfLanguageName{english}{First examiner}{Erstprüfer}:		& \firstexaminer	\\
+		\IfLanguageName{english}{Second examiner}{Zweitprüfer*in}:	& \secondexaminer	\\
+		\IfLanguageName{english}{Advisor}{Betreuer*in}:			& \advisor
+	\end{tabular}
+	
+	\vspace{\stretch{2}}
+	
+\end{center}
+
+% the separation space between text and footer makes spacing uneven, so we remove it for this page
+\vspace*{-\footskip}
+
+\KOMAoption{headinclude}{false}
+\recalctypearea

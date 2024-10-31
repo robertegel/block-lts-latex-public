@@ -1,0 +1,269 @@
+\usepackage{silence}
+\WarningFilter{scrlayer-scrpage}{\headheight to low}
+\WarningFilter{scrlayer-scrpage}{\footheight to low}
+% \WarningsOff[siunitx]
+
+%language, encoding
+%--------------------------------------
+\usepackage[\thesislanguage]{babel}
+\usepackage{iflang}
+\usepackage{iftex}
+\ifxetex
+\else
+	\usepackage[utf8]{inputenc}
+\fi
+%--------------------------------------
+
+
+%directory and file management
+%--------------------------------------
+\usepackage{import}
+% include pages from other pdfs (e.g. topic/task description)
+\usepackage{pdfpages}
+%--------------------------------------
+
+
+%symbols, math
+%--------------------------------------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{cancel}
+\usepackage[normalem]{ulem}
+\usepackage{mathtools}
+\usepackage{pifont}
+\usepackage{physics}
+
+%fonts
+%--------------------------------------
+% \usepackage{layouts}
+\usepackage[l, scale=0.92]{plex-sans}
+% \usepackage[scale=0.92]{plex-mono}
+% \usepackage[scale=0.92]{plex-serif}
+
+\usepackage{siunitx} %-SI units
+\sisetup{
+	output-decimal-marker={.},
+	exponent-product=\ensuremath{\times},
+	per-mode=symbol,
+	% round-mode=places,
+	% round-mode=off,
+	% round-precision=1,
+	% table-format=1.1,
+	%	per-symbol=/
+}
+% \sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}} %e instead of x10^
+% for 1e-2 notation with siunitx, write \num{1e-2}, with units use \SI{1e-2}{\meter\per\second}
+
+% silence siuntix physics collision warning
+\ExplSyntaxOn
+\msg_redirect_name:nnn { siunitx } { physics-pkg } { none }
+\ExplSyntaxOff
+
+\usepackage{eurosym}
+\usepackage{bm} %bold faced greek
+\addtolength{\jot}{1em} %row spacing for \align environments
+\usepackage{nicefrac} % one-line fraction with \nicefrac{a}{b}
+\usepackage{icomma} %better comma placement
+\allowdisplaybreaks
+%--------------------------------------
+
+
+%algorithms
+%--------------------------------------
+\usepackage{algorithm}
+\usepackage[noEnd=false]{algpseudocodex}
+\algrenewcommand\algorithmicforall{\textbf{for each}}
+
+
+%graphics
+%--------------------------------------
+\usepackage{graphicx}
+% \usepackage[rawfloats=true]{floatrow}
+\usepackage[dvipsnames]{xcolor}
+\graphicspath{
+	{./cover/img/}
+}
+\usepackage[Export]{adjustbox}
+\usepackage{placeins}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{pgfplots}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=graphs/tikz/]
+\tikzexternaldisable
+\pgfplotsset{
+	compat=1.18,
+	every axis/.append style={
+			width=8cm,
+			height=5.5cm,
+			every mark/.append style={solid},
+			title style={font=\small},
+			legend style={font=\scriptsize},
+			label style={font=\footnotesize},
+			tick label style={font=\footnotesize}
+		}
+}
+%--------------------------------------
+
+
+%tables
+%--------------------------------------
+% \usepackage{array}
+% \usepackage{tabularx}
+% \usepackage{multirow}
+% \usepackage{bigstrut} %to leave a bit more space around hlines
+% \setlength{\extrarowheight}{3pt}
+% \usepackage{dcolumn}
+% \usepackage{makecell}
+\usepackage{longtable}
+\usepackage{booktabs}
+%--------------------------------------
+
+
+%coding utilities
+%--------------------------------------
+\usepackage{calc}
+\usepackage{xparse}
+\usepackage{xpatch} % for patching commands
+
+% etoolbox is used to create simple on/off toggles
+\usepackage{etoolbox}
+
+\usepackage{letltxmacro}
+%--------------------------------------
+
+
+%style, formatting
+%--------------------------------------
+\usepackage[
+	headsepline,
+	automark,
+	autooneside=false
+]{scrlayer-scrpage}
+\usepackage{scrhack}
+\usepackage[onehalfspacing]{setspace}
+% \usepackage{setspace}
+% \setstretch{1.2} %line spacing factor
+\usepackage{microtype} %increases compile time, but makes everything look better
+
+% customisable enumerations
+\usepackage[inline]{enumitem}
+%--------------------------------------
+
+
+%clickable references
+%--------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+	% colorlinks,
+	% urlcolor = black,
+	% linkcolor = black,
+	% citecolor = black
+	hidelinks, % active links in \textcolor without a box around them
+	% pdfborderstyle={/S/U/W 1},  % underline links instead of using boxes
+	% linkbordercolor=lightgray,
+	% citebordercolor=lightgray,
+	% urlbordercolor=lightgray,
+	pdfpagemode = UseNone,
+	pdfstartview = Fit,
+	bookmarksopen = true,
+	bookmarksopenlevel= 0,
+	bookmarksnumbered = true,
+	plainpages = false,
+	hypertexnames = false,
+}
+% for going to the top of an image when a figure reference is clicked
+\usepackage[all]{hypcap}
+
+\usepackage[style=listdotted,nogroupskip,toc,acronym,nomain,xindy,
+	% automake=immediate → put makeglossaries in recipe
+]{glossaries}
+\makeglossaries
+\setlength{\glslistdottedwidth}{0.3\textwidth}
+
+%bibliography
+%--------------------------------------
+\usepackage{csquotes}
+\usepackage[
+	% style=authoryear,
+	style=authoryear-ibid,
+	maxbibnames=9,
+	maxcitenames=2,
+	mincitenames=1,
+	giveninits=true,
+	dashed=false,
+	% uniquename=init,
+	uniquename=false,
+	dateabbrev=false,
+	uniquelist=minyear,
+	backend=biber,
+	url=false,
+	eprint=false,
+	isbn=false
+]{biblatex}
+\renewcommand*{\nameyeardelim}{\addcomma\space}
+\DefineBibliographyStrings{german}{
+	andothers = {{et\addabbrvspace al\adddot}},
+}
+% print url if no doi
+\renewbibmacro*{doi+eprint+url}{%
+	\printfield{doi}%
+	\newunit\newblock%
+	\iftoggle{bbx:eprint}{%
+		\usebibmacro{eprint}%
+	}{}%
+	\newunit\newblock%
+	\iffieldundef{doi}{%
+		\usebibmacro{url+urldate}}%
+	{}%
+}
+\addbibresource{bibliography.bib}
+
+% \AtBeginBibliography{%
+% 	%-ampersand in bibliography-
+% 	% \renewcommand*{\finalnamedelim}{%
+% 	% 	\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+% 	% 	\addspace\&\space}%
+% 	%small caps in bibliography
+% 	\renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}%
+% 	\renewcommand*{\mkbibnameprefix}[1]{\textsc{#1}}%
+% }
+% %-ampersand in parencite, but not textcite-
+% \let\origparencite\parencite
+% \renewrobustcmd{\parencite}{%
+% 	\AtNextCite{%
+% 		\renewcommand*{\finalnamedelim}{%
+% 			\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+% 			\addspace\&\space}%
+% 	}%
+% 	\origparencite%
+% }
+% %-ampersand in autocite, but not textcite-
+% \let\origautocite\autocite
+% \renewrobustcmd{\autocite}{%
+% 	\AtNextCite{%
+% 		\renewcommand*{\finalnamedelim}{%
+% 			\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+% 			\addspace\&\space}%
+% 	}%
+% 	\origautocite%
+% }
+
+%-family-given, firstname
+\DeclareNameAlias{sortname}{family-given}
+\DeclareNameAlias{default}{family-given}
+
+%suppress "Tech. Rep." in bibliography
+\DeclareBibliographyDriver{report}{%
+	\usebibmacro{bibindex}%
+	\usebibmacro{begentry}%
+	\usebibmacro{author}
+	\setunit{\labelnamepunct}\newblock
+	\usebibmacro{title}%
+	\newunit\newblock
+	\printfield{type}% here the suppression happens. uncommenting this line lets the type be printed again
+	\iffieldequalstr{type}{techreport}{}{\printfield{type}}% if you want other reports to have their type printed, use this line. Either this line or the one above, or none. Not both.
+	\newunit\newblock
+	\usebibmacro{institution+location+date}
+	\usebibmacro{pageref}%
+	\usebibmacro{finentry}}

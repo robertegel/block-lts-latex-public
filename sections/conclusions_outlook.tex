@@ -1,0 +1,53 @@
+\section{Conclusions and Outlook}\label{sec:conclusion-outlook}
+
+This thesis covers the development and implementation of the \acrlong{frozen-block-LTS} scheme in the \gls{swe} model \gls{hms}.
+To mitigate initial instabilities, modifications have been established regarding the criterion for scalar flux computations and the synchronization of adjacent blocks.
+Outside of a single outlier case, the scheme provides good stability and maintains comparable accuracy to \acrlong{gts} schemes.
+The results obtained in this thesis further show that an \gls{lts} scheme that builds on block-wise traversal can reduce simulation runtimes by upwards of \SI{30}{\percent} in some test configurations and $>\SI{20}{\percent}$ in practical application cases.
+
+
+% Literature suggests, that \gls{lts} bears most improvements when it is applied to non-uniform grids \autocite{crossley2003,sanders2008}.
+% The effectiveness of \gls{frozen-block-LTS} has not reached the level of other \gls{lts} schemes \autocite{crossley2003,sanders2008}. 
+% It is suspected that this is partly due to the restriction of block-wise traversal, which requires uniform rectangular grids \autocite{lennart-hms}.
+
+% \begin{todolist}
+%   \itemtodo{compare runtime reduction with crossley2003, sanders2008 and maybe hu2019}
+%   \itemtodo{also compare reduction of full flux computation}
+%   \itemtodo{relation of both reductions}
+%   \itemtodo{uniform grids}
+%   \itemtodo{water depth}
+% \end{todolist}
+
+% \note{not done yet}
+
+% \section{Outlook}\label{sec:outlook}
+
+Several observations could not yet be fully explained and thus may warrant further investigation.
+% During the analysis of the results, a point of not being able to explain an observation has been reached multiple times.
+Firstly, it was found that larger cell sizes or Courant number limits -- and thus overall larger minimal time steps -- disproportionately benefit the proposed \gls{lts} scheme's runtime when compared to the reference \gls{gts} scheme.
+Finding the root cause of this behavior could not only close this knowledge gap, but also potentially provide comprehension on how the underlying mechanisms could be exploited to further improve the scheme.
+Secondly, quantitatively linking the share of scalar computations to the runtime reduction could help to focus any future efforts on improving the scheme. 
+This includes gaining insight into why boundary blocks perform more scalar flux computation than inner blocks.
+Understanding this might also help to determine the cause of instabilities when combining \gls{tvd} reconstruction and \gls{frozen-block-LTS}, manifesting themselves as checker-boarding of the water depth, as shown in \autoref{fig:tvd-checker-boarding}.
+Furthermore, the 
+development of deviations between \gls{lts} and \gls{gts} over time in the urban rainfall-runoff simulation (\autoref{sec:results-moabit}) warrants further analysis. 
+Here, a comparably fast and localized increase in the beginning was followed by deviations remaining constant over the rest of the simulation.
+% emergence of errors at the start of the simulation, as described in \autoref{sec:results-moabit}, requires a detailed analysis, including their stabilization and spatial concentration over time.
+% Explorations on the impact of block size, among other parameters, could lead to optimal parameters, 
+Looking into the interplay of load balancing (i.e., the assignment of block updates to solver threads) with the \gls{frozen-block-LTS} scheme may lead to additional performance gains by distributing scalar and full computations evenly on solver threads.
+Finally, as \gls{lts} schemes typically provide the highest benefits on non-uniform grids, an extension of the scheme to such grids may also be a worthwhile topic for further investigation \autocite{crossley2003,sanders2008}. 
+This, however, would require an extension of \gls{hms} and its block-wise traversal as well and as such would be a much larger effort in scope.
+
+% Literature suggests, that \gls{lts} bears most improvements when it is applied to non-uniform grids \autocite{crossley2003,sanders2008}.
+% The effectiveness of \gls{frozen-block-LTS} has not reached the level of other \gls{lts} schemes \autocite{crossley2003,sanders2008}. 
+% It is suspected that this is partly due to the restriction of block-wise traversal, which requires uniform rectangular grids \autocite{lennart-hms}.
+
+
+% Foremost, the emergence of errors, as described in \autoref{sec:results-moabit}, requires a detailed analysis.
+% Their stabilization and centralization throughout simulation time should be covered as well.
+% Additionally, the divergent behavior of the \gls{frozen-block-LTS} scheme of first-order and \gls{tvd} reconstruction.
+% As a part of this, insight into why boundary blocks perform more scalar flux computation than inner blocks should be gained.
+% Understanding this might also help figure out the cause of the instabilities caused by the combination of \gls{tvd} reconstruction and \gls{frozen-block-LTS}, manifesting themselves in checker-boarding, as shown in \autoref{fig:tvd-checker-boarding}.
+% Otherwise, explorations on the impact of block size, and overall time step sizes throughout the domain, as well as the influence of different load balancing schemes for the assignment of block updates to solver threads could help improve the \gls{frozen-block-LTS} scheme's efficiency.
+
+% \note{something on non-uniform grids, maybe quad trees}

@@ -1,0 +1,103 @@
+\begin{subfigure}{\textwidth}
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={$x \ [\si{\meter}]$},
+        ylabel={$d [\si{\meter}]$},
+        % ymin=-0.5,
+        legend pos=north east,
+        % ymajorgrids=true,
+        % grid style=loosely dashed,
+      ]
+      % analytical
+      \addplot [black, very thin, mark=none] 
+        table [x=x, y=d_ana, col sep=comma] {./graphs/accuracy/data/wet_t0.6s.csv};
+      % GTS
+      \addplot [only marks, lightgray, mark=o, mark repeat=5, mark phase=1] 
+        table [x=x, y=d_gts_tvd, col sep=comma] {./graphs/accuracy/data/wet_t0.6s.csv};
+      % LTS
+      \addplot [only marks, CadetBlue, mark=x, mark repeat=5, mark phase=1] 
+        table [x=x, y=d_lts_tvd, col sep=comma] {./graphs/accuracy/data/wet_t0.6s.csv};
+      \legend{analytical, GTS, LTS}
+    \end{axis}
+  \end{tikzpicture}
+  \hfill
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={$x \ [\si{\meter}]$},
+        ylabel={$v \ [\si{\meter\per\second}]$},
+        % ymin=-0.5,
+        legend pos=north west,
+        % ymajorgrids=true,
+        % grid style=loosely dashed,
+      ]
+      % analytical
+      \addplot [black, very thin, mark=none] 
+        table [x=x, y=v_ana, col sep=comma] {./graphs/accuracy/data/wet_t0.6s.csv};
+      % GTS
+      \addplot [only marks, lightgray, mark=o, mark repeat=5, mark phase=1] 
+        table [x=x, y=v_gts_tvd, col sep=comma] {./graphs/accuracy/data/wet_t0.6s.csv};
+      % LTS
+      \addplot [only marks, CadetBlue, mark=x, mark repeat=5, mark phase=1] 
+        table [x=x, y=v_lts_tvd, col sep=comma] {./graphs/accuracy/data/wet_t0.6s.csv};
+      \legend{analytical, GTS, LTS}
+    \end{axis}
+  \end{tikzpicture}
+  \\ \vspace{0.4cm}
+  \includegraphics[width=0.8\textwidth]{../typst/heatmaps/analytical/dambreak_wet_lts_tvd.pdf}
+  \\ \vspace{0.4cm}
+  \caption{Wet dam break}\label{fig:acc-wet-tvd}
+\end{subfigure}
+
+\vspace{1cm}
+
+\begin{subfigure}{\textwidth}
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={$x \ [\si{\meter}]$},
+        ylabel={$d [\si{\meter}]$},
+        % ymin=-0.5,
+        legend pos=north east,
+        % ymajorgrids=true,
+        % grid style=loosely dashed,
+      ]
+      % analytical
+      \addplot [black, very thin, mark=none] 
+        table [x=x, y=d_ana, col sep=comma] {./graphs/accuracy/data/dry_t0.6s.csv};
+      % GTS
+      \addplot [only marks, lightgray, mark=o, mark repeat=5, mark phase=1] 
+        table [x=x, y=d_gts_tvd, col sep=comma] {./graphs/accuracy/data/dry_t0.6s.csv};
+      % LTS
+      \addplot [only marks, CadetBlue, mark=x, mark repeat=5, mark phase=1] 
+        table [x=x, y=d_lts_tvd, col sep=comma] {./graphs/accuracy/data/dry_t0.6s.csv};
+      \legend{analytical, GTS, LTS}
+    \end{axis}
+  \end{tikzpicture}
+  \hfill
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={$x \ [\si{\meter}]$},
+        ylabel={$v \ [\si{\meter\per\second}]$},
+        % ymin=-0.5,
+        legend pos=north west,
+        % ymajorgrids=true,
+        % grid style=loosely dashed,
+      ]
+      % analytical
+      \addplot [black, very thin, mark=none] 
+        table [x=x, y=v_ana, col sep=comma] {./graphs/accuracy/data/dry_t0.6s.csv};
+      % GTS
+      \addplot [only marks, lightgray, mark=o, mark repeat=5, mark phase=4] 
+        table [x=x, y=v_gts_tvd, col sep=comma] {./graphs/accuracy/data/dry_t0.6s.csv};
+      % LTS
+      \addplot [only marks, CadetBlue, mark=x, mark repeat=5, mark phase=4] 
+        table [x=x, y=v_lts_tvd, col sep=comma] {./graphs/accuracy/data/dry_t0.6s.csv};
+      \legend{analytical, GTS, LTS}
+    \end{axis}
+  \end{tikzpicture}
+  \\ \vspace{0.4cm}
+  \includegraphics[width=0.8\textwidth]{../typst/heatmaps/analytical/dambreak_dry_lts_tvd.pdf}
+  \\ \vspace{0.4cm}
+  \caption{Dry dam break}\label{fig:acc-dry-tvd}
+\end{subfigure}

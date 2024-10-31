@@ -1,0 +1,20 @@
+% LTeX: language=de-DE
+
+%\section*{\IfLanguageName{english}{Abstract}{Zusammenfassung}}\label{sec:abstract}
+\section*{Kurzzusammenfassung}\label{sec:kurzzus}
+
+In dieser Arbeit wird ein lokales Zeitschrittverfahren (\emph{Local Time Stepping} (LTS)) für das \gls{hms} vorgestellt.
+Bei \gls{hms} handelt es sich um einen am Fachgebiet für Wasserwirtschaft und Hydrosystemmodellierung entwickelten Flachwassergleichungslöser.
+Ein Fokuspunkt der kontinuierlichen Entwicklung von \gls{hms} ist die Optimierung der Rechenleistung.
+Die Erweiterung von \gls{hms} um ein LTS-Schema folgt diesem Ziel dementsprechend, solange die Kompatibilität mit den bestehenden Optimierungsmethoden von \gls{hms} gewährleistet wird.
+Deshalb arbeitet das vorgeschlagene Verfahren mit Blöcken von Zellen, anstelle einzelner Zellen.
+Es verfolgt den Ansatz, den Umfang der Flussberechnungen zu reduzieren, indem Flussvektoren \emph{eingefroren} und entsprechend einem lokalen Stabilitätskriterium wiederverwendet werden.
+Dieses Kriterium basiert darauf, das Minimum des lokalen Zeitschritts aller Zellen innerhalb eines Blocks als dessen zulässigen Zeitschritt zu wählen, sodass die Zellen des Blocks mit Parallelisierungsmethoden berechnet werden können.
+Daher wird das vorgeschlagene Verfahren als \emph{Frozen Block LTS} bezeichnet.
+Die Wiederverwendung von zuvor berechneten Flüssen wird durch adaptive Skalierung entsprechend des aktuellen globalen Zeitschritts erreicht.
+Anfängliche Probleme mit der Stabilität sowie der Synchronisierung einiger benachbarter Blöcke wurden durch eine Überarbeitung des Kriteriums für die Durchführung von skalaren Flussberechnungen und die Einführung der Übertragung von erzwungenen vollen Flussberechnungen auf direkte Nachbarn (\emph{Neighbor Propagation}) behoben.
+Mit Ausnahme eines Ausreißers hat sich \emph{Frozen Block LTS} als stabil erwiesen und weist eine vergleichbare Genauigkeit zu dem derzeit verwendeten globalen Zeitschrittverfahren auf.
+In einem analytischen Benchmark konnte \emph{Frozen Block LTS} die Simulationslaufzeit um
+mehr als \SI{30}{\percent} reduzieren, während in einem praktischen Niederschlagsabfluss-Szenario Reduktionen um mehr als \SI{20}{\percent} erreicht wurden.
+
+%https://wordvice.com/which-tense-should-be-used-in-abstracts-past-or-present/

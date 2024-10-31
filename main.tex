@@ -1,0 +1,73 @@
+\documentclass [12pt,a4paper, parskip=half]{scrartcl}
+% this must be either english or german (ngerman also works). When switching, remove .aux file.
+\newcommand{\thesislanguage}{english}
+
+\newcommand{\name}{Robert Egel \\ {\small \texttt{robert.egel@campus.tu-berlin.de}}}
+\newcommand{\thesistitle}{A Novel Approach \\ to Local Time Stepping using the \\ Shallow Water Equations Model \hms}
+\newcommand{\thesiscategory}{Bachelor thesis}
+\newcommand{\currentdate}{August 2024}
+
+\newcommand{\firstexaminer}{Prof. Dr.-Ing. R. Hinkelmann}
+\newcommand{\secondexaminer}{Dr.-Ing. F. Tügel}
+\newcommand{\advisor}{Lennart Steffen, M.Sc.}
+
+\input{./settings/packages}
+\input{./settings/macros}
+\input{./settings/styles}
+\input{./settings/glossary}
+
+\begin{document}
+\frenchspacing
+
+% helps with overfull hboxes
+\emergencystretch 0.5em
+
+
+\subimport{cover/}{coverpage} \newpage
+
+\pagestyle{empty}
+
+% remove these!!
+% \subimport{sections}{todos} \FloatBarrier \newpage  \FloatBarrier
+
+\subimport{sections/}{affidavit} \newpage
+\glsresetall
+\subimport{sections/}{abstract} \newpage
+\glsresetall
+\subimport{sections/}{kurzzusammenfassung} \newpage
+
+\pagestyle{scrheadings}
+\pagenumbering{Roman}
+% {\sffamily \tableofcontents} \newpage
+\tableofcontents \newpage
+
+\setcounter{secnumdepth}{-1}
+\listoffigures \newpage
+\listoftables \newpage
+\listofalgorithms \addcontentsline{toc}{section}{List of Algorithms} \newpage
+\subimport{sections/}{listOfSymbols} \newpage
+
+\begin{singlespace}
+  \printglossary[title={List of Abbreviations},nogroupskip=true] \newpage
+\end{singlespace}
+
+% content sections
+\setcounter{secnumdepth}{4}
+\pagenumbering{arabic}
+\setcounter{section}{0}
+
+\glsresetall
+\subimport{sections}{introduction} \FloatBarrier \newpage \FloatBarrier
+\subimport{sections}{background} \FloatBarrier \newpage \FloatBarrier
+\subimport{sections}{methodology} \FloatBarrier \newpage \FloatBarrier
+\subimport{sections}{results}  \newpage \FloatBarrier
+\subimport{sections}{conclusions_outlook} \newpage
+
+
+% bibliography
+\printbibliography[heading=bibintoc,title={\IfLanguageName{english}{References}{Literatur}}] \newpage
+
+\appendix
+\subimport{sections}{app_porting}
+
+\end{document}

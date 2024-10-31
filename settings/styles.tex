@@ -1,0 +1,100 @@
+% this file needs the adjustbox package with [Export] option for alignment of logos
+
+% page header for title page
+\defpagestyle{coverpage}{
+	% header
+	% upper line length and width (here: no line)
+	(0pt,0pt)
+	% first two braces are for even/odd pages, third for single style
+	{}{}{%
+		% height for university and chair logo
+		\newlength{\minipicheight}
+		\setlength{\minipicheight}{18mm}
+		\begin{spacing}{1.15}
+			\includegraphics[height=\minipicheight, valign=m]{wahyd-logo.pdf}
+			\hspace{3mm}
+			\begin{minipage}[c]{.64\textwidth}
+				\color[RGB]{16,56,88}
+				%	\vspace{0pt}
+				\upshape
+				\raggedright
+                \sffamily
+				\footnotesize
+				%
+				Technische Universität Berlin
+				\\
+				\IfLanguageName{english}{
+					Faculty VI -- Planning Building Environment \textbar{} Inst. of Civil Engineering
+					\\
+					\mbox{Chair of Water Resources Management and Modeling of Hydrosystems}
+				}{
+					Fakultät VI -- Planen Bauen Umwelt \textbar{} Institut für Bauingenieurwesen
+					\\
+					Fachgebiet Wasserwirtschaft und Hydrosystemmodellierung
+				}
+				\\
+				Prof. Dr.-Ing. R. Hinkelmann
+				%
+			\end{minipage}%
+			\hfill
+			\includegraphics[height=\minipicheight, valign=m]{tub_logo.pdf}
+		\end{spacing}
+		\vspace{0.3cm}
+	}
+	% length and width for line below header
+%	(\textwidth, \arrayrulewidth)
+	(0pt,0pt)
+}{
+	% footer
+	% line above footer
+	(0pt, 0pt)
+%	(\textwidth, \arrayrulewidth)
+	{}{}{%
+		\begin{center}
+			\color[RGB]{16,56,88}
+			\large\upshape\sffamily
+			\currentdate
+			%			\scriptsize\upshape\sffamily
+			%			TU Berlin~$\cdot$ Fakultät VI~$\cdot$ Institut für Bauingenieurwesen~$\cdot$ Fachgebiet Wasserwirtschaft und Hydrosystemmodellierung\\%~$\cdot$
+			%			Sekr. TIB1-B14~$\cdot$ Gustav-Meyer-Allee 25~$\cdot$ 13355 Berlin~$\cdot$ www.wahyd.tu-berlin.de
+		\end{center}
+	}
+	(0pt,0pt)
+}
+
+
+
+% page header for style scrheadings
+\clearpairofpagestyles
+% \setkomafont{pagehead}{\normalfont}
+\addtokomafont{disposition}{\rmfamily}
+\ihead{\leftmark}
+\ohead{\Ifstr{\leftmark}{\rightbotmark}{}{\rightbotmark}}
+\cfoot{\pagemark}
+\automark[subsection]{section} % not working correctly yet
+
+
+% no indent for new paragraphs
+\setlength{\parindent}{0pt}
+
+% section numbers in tables and figures
+\numberwithin{table}{section}
+\numberwithin{figure}{section}
+
+% lists (tables, figures,...) in toc
+\KOMAoption{listof}{entryprefix, tocnumbered}
+
+% section numbers in float elements
+\numberwithin{figure}{section}
+\numberwithin{equation}{section}
+\numberwithin{table}{section}
+
+% equation references as "Eq. ##"
+\LetLtxMacro{\originaleqref}{\eqref}
+\renewcommand{\eqref}{\IfLanguageName{english}{Eq}{Gl}.~\originaleqref}
+
+% itemize/list options
+\setlist[todolist]{label=$\square$, noitemsep}
+\setlist[todolist,2]{topsep=0pt}
+\setlist[itemize]{noitemsep, label={--}}
+\setlist[enumerate]{noitemsep}

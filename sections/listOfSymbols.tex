@@ -1,0 +1,79 @@
+\newcommand{\listofsymbolsTitle}{Symbolverzeichnis}
+\newcommand{\listofsymbolsDesc}{Beschreibung}
+\newcommand{\listofsymbolsUnit}{Einheit}
+
+\IfLanguageName{english}{
+  \renewcommand{\listofsymbolsTitle}{List of Symbols}
+  \renewcommand{\listofsymbolsDesc}{Description}
+  \renewcommand{\listofsymbolsUnit}{Unit}
+}{}
+
+
+\section{\listofsymbolsTitle}\label{sec:symbols}
+
+% \begin{longtable}[l]{@{}l@{\hspace{1em}}!{-}@{\hspace{1em}}l@{\hspace{1em}}l}
+\begin{longtable}[l]{l@{\hspace{1em}}!{-}@{\hspace{1em}}l@{\hspace{20mm}}l}
+
+  % the hspace 20mm above stretches the table to approx textwidth
+  % it should be adapted when changing the table
+
+  \toprule
+  \textbf{Symbol}     & \textbf{\listofsymbolsDesc}                               & \textbf{\listofsymbolsUnit}      \\
+  \midrule
+  %
+  % small roman first
+  %
+  $d$                 & water depth                                               & [\si{\meter}]                    \\
+  $g$                 & gravitational acceleration                                & [\si{\meter\per\square\second}]  \\
+  $f_x$               & external forces in $x$ direction                          & [\si\newton]                     \\
+  $f_y$               & external forces in $y$ direction                          & [\si\newton]                     \\
+  % $h$             & water depth                        & [\si{\meter}]                    \\
+  $m_{\mathrm{w}}$    & mass sources and sinks                                    & [\si{\meter\per\second}]         \\
+  $t$                 & time                                                      & [\si\second]                   \\
+  $u$                 & depth-averaged flow velocity in $x$ direction     \       & [\si{\meter}]                    \\
+  $v$                 & depth-averaged flow velocity in $y$ direction             & [\si{\meter}]                    \\
+  $v_{i, \max}$       & maximum propagation velocity                              & [\si{\meter\per\second}]         \\
+  $x$                 & spatial dimension                                         & [\si{\meter}]                    \\
+  $y$                 & spatial dimension                                         & [\si{\meter}]                    \\
+  $z$                 & spatial dimension                                         & [\si{\meter}]                    \\
+  $z_{\mathrm{B}}$    & bottom elevation                                          & [\si\meter]                      \\
+
+
+
+  % $\mathbf{\Delta t}$   & global time step                                          & [ \si \second  ]                 \\
+  % $\mathbf{\Delta t_i}$ & local time step for a cell                                & [ \si \second  ]                 \\
+  % $\mathbf{\Delta t_m}$ & local time step for a level                               & [ \si \second  ]                 \\
+  % $\mathbf{\Delta t_b}$ & local time step for a block                               & [ \si \second  ]                 \\
+
+
+  %
+  % capital roman next
+  %
+  $A$                 & cell area                                                 & [\si{\meter\squared}]            \\
+  $\Cr$               & Courant number                                            & [--]                             \\
+  $P$                 & cell perimeter                                            & [\si\meter]                      \\
+
+  %
+  % then small greek
+  %
+  $\nu$               & kinematic viscosity                                       & [\si{\meter\squared\per\second}] \\
+  $\tau_{\mathrm{B}}$ & bed shear stress                                          & [\si{\newton\per\meter\squared}] \\
+
+  %
+  % then capital greek
+  %
+
+  \midrule
+  %
+  % vectors
+  %  
+  $\mathbf{F}$        & flux vector normal to cell edge                                                              \\
+  $\mathbf{f}$        & vector of advective and diffusive fluxes in $x$ direction &                                  \\
+  $\mathbf{g}$        & vector of advective and diffusive fluxes in $y$ direction &                                  \\
+  $\mathbf{n}$        & normal vector to cell edge                                &                                  \\
+  $\mathbf{s}$        & vector of sources and sinks                               &                                  \\
+  $\mathbf{q}$        & vector of conserved state variables                       &                                  \\
+  $\mathbf{v}$        & depth-averaged flow velocity                              &                                  \\
+  \bottomrule
+\end{longtable}
+\newpage

@@ -1,0 +1,120 @@
+% LTeX: enabled=false
+
+\section{todos}
+
+\begin{todolist}
+  \itemdone{Schriftschnitt siehe Kommentar in macros.tex}
+  \itemdone{korrektur \autoref{fix:vector-components}}
+  \itemdone{time index vs time step in method}
+  \itemdone{properly cite Dazzi fig}
+  \itemdone{wave speed → max propagation velo}
+  \itemdone{\sout{time} level loop genau beschreiben (start, ende, was passiert grob (primär synchronisierung))}
+  \itemdone{korrektur \autoref{fix:tvd-fo-cost}}
+  \itemdone{\autoref{sec:methods} nochmal lesen}
+  \itemdone{zu \textcite{zhang1994a} and \textcite{crossley2003} improved accuracy: ja haben sie begründet, nein will ich eigentlich nicht replizieren → erklärung numerische Diffusion}
+  \itemdone{Yangweis Tiergarten real case läuft nicht}
+  \itemdone{check again: \autoref{fix:flux-cost-share} Benchmark cases have shown that flux computations account for up to 75\% of the programs runtime.}
+  \itemdone{reconstruction background \autoref{fix:reconstruction}}
+  \itemdone{list of symbols \autoref{sec:symbols}}
+  \itemdone{"FB-LTS" looks ugly}
+  \itemdone{final style: serial/oxford comma}
+  \itemdone{final style: use american english exclusively}
+  \itemcanceled{final style: tense}
+  \itemdone{Lenni mesh fig}
+  \itemdone{Lenni application of SWE/hms fig}
+ 
+  \itemdone{results}
+    \begin{todolist}
+      \itemcanceled{conservation, optional steps/modifications toward cons}
+      \itemcanceled{robstuness/stability?}
+      \itemdone{results / accuracy}
+      \begin{todolist}
+        \itemdone{describe dambreak accuracy just a little bit better (NSE is not covered at all)}
+        \itemdone{theres space left over in the subfigures, let's add heatmaps}
+        \itemdone{describe heatmaps}
+      \end{todolist}
+
+      \itemdone{results / benchmarks}
+      \begin{todolist}
+        \itemdone{move case introduction to method}
+        \itemdone{benchmark table caption}
+        \itemdone{benchmark dam break: describe parameter effects, try to find explanations}
+        \itemdone{heatmaps} 
+        \itemdone{timing output}
+        \itemdone{describe timing output}
+      \end{todolist}
+
+      \itemdone{results / Moabit}
+      \begin{todolist}
+        \itemdone{update table + mentioned values}
+        \itemdone{describe speed-up }
+        \itemdone{pics}
+        \itemdone{diff paraview Moabit (discretized)}
+        \itemdone{describe diff}
+        \itemdone{also, why is the speed-up difference between fo/TVD this big?}
+        \itemdone{TVD 3600s Moabit 1800s → not usable, neither gts nor lts}
+        \itemdone{heatmaps} 
+      \end{todolist}
+
+      \itemdone{the ugly: TVD checkerboarding problems?}
+      \itemdone{captions}
+      \itemdone{update Moabit $t_\text{end}=3600$}
+      \itemdone{siunitx setup \autoref{sec:results-benchmarks}}
+      \itemdone{speed-up, execution time reduction → runtime reduction}
+      \itemdone{
+        Abweichungen siehe Lenni Signal 
+%         bei t=1200s weichen:
+% - 50 Zellen mehr als 0.10m ab 
+% - und 283 mehr als 0.05m ab
+
+% Maximum ist 0.9814, danach kommt 0.6567 (siehe screenshot)
+      }
+      \itemdone{legende anpassen $<, >$}
+      \itemdone{restructure results}
+      \itemdone{"From this, we may conclude that larger time steps seem to benefit \gls{lts}." → ich verstehe, aber die Formulierung "This is due to the direct effect ..." legt nahe, dass es damit tatsächlich erklärt ist.}
+      \itemdone{move another paragraph from results to method (benchmark section)}
+      \itemdone{restructure method (subsections for each case) → references in results}
+      \itemdone{porting specifics}
+    \end{todolist}
+
+  \itemdone{method: cases+metrics}
+  \itemdone{describe urban case}
+  \itemdone{explain pow2 LTS drawbacks more understandably \autoref{fix:pow2-LTS-drawbacks}}
+  \itemdone{as literature indicates..... oops \autoref{fix:pow2-LTS-drawbacks}}
+  \itemdone{siunitx round nur in Tabellenspalten etc.}
+  \itemdone{evtl überall siunitx}
+  \itemdone{memory überarbeiten}
+    \begin{todolist}
+    \itemdone{Kommentar ganz oben}
+    \itemdone{enumeration am start}
+    \itemdone{"complicated arrangement"}
+    \itemdone{tvd fo tauschen}
+    \itemdone{bisschen netter zu Indexing sein}
+  \end{todolist}
+  \itemdone{introduction}
+  \itemdone{conclusion}
+  \itemdone{outlook}
+  \itemdone{Abstract}
+  \itemdone{Kurzzusammenfassung}
+  \itemdone{Mail}
+  \itemcanceled{transitions/section introductions}
+  \itemdone{delete todo lists}
+  \itemdone{remove \texttt{\textbackslash{}note}}
+\end{todolist}
+
+\subsection{offene Fragen}
+
+\begin{todolist}
+  \itemdone{TVD checkerboarding Probleme? → results, outlook?}
+  \itemdone{reconstruction + flux schemes fo/tvd/HLLC \autoref{fix:reconstruction}}
+  \itemdone{branching operations by conditional statements \autoref{fix:conditional-statments}: Prinzipiell meinte ich, dass die Entscheidung, ob full oder scalar compute seltener getroffen werden muss, weil pro Block statt pro Zelle. → "may" + besser ausführen}
+  \itemdone{ja, in \autoref{eq:frozen-block-criterion} müsste eigentlich noch Faktor 2 hin, kommt dann in revisions (primär um die eine Grafik nicht kaputt zu machen)}
+  \itemdone{Punkt als Dezimaltrenner?}
+  % \itemdone{settings for tvd/first-order}
+  % \itemdone{Artikel weglassen → eher Plural draus machen, jedenfalls nicht weg \autoref{sec:swe}}
+  % \itemdone{ich kann doch das wörtliche Zitat nicht verändern? \autoref{sec:LTS}}
+  % \itemdone{non-uniform erklären oder einfach vorraussetzen? \autoref{sec:LTS} → voraussetzen ist okay}
+  % \itemdone{fun fact: die Probleme mit \texttt{\textbackslash{}gls} kommen aus List of Figures, weil es teils in den Captions ist, lässt sich durch reset lösen}
+  % \itemdone{int in \autoref{eq:expiretime} und \autoref{eq:pow2-lts-level} (int kann prinzipiell weg, an sich ist das ja schon abgerundet?) → raus}
+  % \itemdone{(characteristic) wave speed kommt von \textcite{crossley2003,sanders2008}}
+\end{todolist}

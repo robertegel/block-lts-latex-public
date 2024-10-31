@@ -1,0 +1,135 @@
+% ==============
+% math
+% ==============
+%index typesetting
+\newcommand{\tn}[1]{\textnormal{#1}}
+%% typesetting indexes upright by default ( would have to replace every instance of _\tn{} )
+%\def\subinrm#1{\sb{\textnormal{#1}}}
+%{\catcode`\_=13 \global\let_=\subinrm}
+%\mathcode`_="8000
+%\def\upsubscripts{\catcode`\_=12 } \def\normalsubscripts{\catcode`\_=8 }
+%% the toggle for upright subscripts
+%\upsubscripts
+%% the toggle for italic subscripts
+%%\normalsubscripts
+%matrix typesetting
+%with arrows
+\newcommand{\matr}[1]{\vec{#1}} % with small arrow
+%\newcommand{\matr}[1]{\overrightarrow{#1}} % bigger arrow that can span multiple characters
+%without arrows
+%\newcommand{\matr}[1]{\mathbf{#1}} % undergraduate algebra version
+%\newcommand{\matr}[1]{#1}          % pure math version
+%\newcommand{\matr}[1]{\bm{#1}}     % ISO complying version, needs bm package
+% differentials
+% \newcommand{\dif}		{\mathop{}\!\mathrm{d}}
+% \newcommand{\laplace}	{\mathop{}\!\Delta}
+% \newcommand{\diver}		{\mathop{}\!\mathrm{div}\mathop{}\!}
+% \newcommand{\grad}		{\mathop{}\!\mathrm{grad}\mathop{}\!}
+% \newcommand{\rot}		{\mathop{}\!\mathrm{rot}\mathop{}\!}
+% \newcommand{\pfrac}[2]	{\frac{\partial #1}		{\partial #2}}
+% \newcommand{\ppfrac}[2]	{\frac{\partial^2 #1}	{\partial #2^2}}
+% \newcommand{\diffrac}[2]{\frac{\dif #1}			{\dif #2}}
+%other symbols, quantities, and expressions
+\newcommand{\Rey}{\mathit{R\!e}} % \! suppresses spacing between characters
+\newcommand{\Fr}{\mathit{F\!r}}
+\newcommand{\Eu}{\mathit{E\!u}}
+\newcommand{\Ma}{\mathit{M\kern-3pt a}}
+\newcommand{\We}{\mathit{W\kern-4pt e}}
+\newcommand{\Sr}{\mathit{S\!r}}
+\newcommand{\NN}{\textnormal{NN}}
+\newcommand{\const}{\mathrm{const.}}
+% \newcommand{\Cr}{\ensuremath{\mathrm{Cr}}}
+\newcommand{\Cr}{\ensuremath{\textit{Cr}}}
+
+% ==============
+% tables
+% ==============
+% the command "multicolumn" is way too long
+\newcommand{\mcol}[3]{\multicolumn{#1}{#2}{#3}}
+% to overwrite dcolumns in header row
+\newcommand{\hcel}[1]{\multicolumn{1}{c}{#1}}
+% empty cells
+\newcommand{\emptycells}[1]{\multicolumn{#1}{l}{}}
+\newcommand\mc[1]{\multicolumn{1}{c}{#1}}
+% horizontally centered columns
+%\newcolumntype{C}[1]{>{\centering\arraybackslash}X}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+% fixed width left, center, and right columns
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+% variable width for tabularx
+\newcolumntype{x}{>{\raggedright\arraybackslash}X}
+\newcolumntype{z}{>{$}l<{$}} % math-mode version of "l" column type
+\newcolumntype{q}{>{$}c<{$}} % math-mode version of "c" column type
+\newcolumntype{y}{>{$}r<{$}} % math-mode version of "r" column type
+% unit column
+\newcolumntype{u}{>{$\left[}l<{\right]$}}
+% math-mode version of "R", "C", and "L" column type
+\newcolumntype{Z}[1]{>{$}L{#1}<{$}}
+\newcolumntype{Q}[1]{>{$}C{#1}<{$}}
+\newcolumntype{Y}[1]{>{$}R{#1}<{$}}
+% centering on decimal point. Because of icomma package, the printed glyph has to be set to \mathord\mathcomma
+\newcolumntype{d}[1]{D{,}{\mathord\mathcomma}{#1}}
+% width of right column with explanations
+\newlength{\ecolwidth}
+\setlength{\ecolwidth}{0.4\textwidth}
+% width of left column when there are no explanations
+\newlength{\lcolwidth}
+\setlength{\lcolwidth}{0.4\textwidth}
+
+% ==============
+% automation
+% ==============
+% subdirectories for importing files
+\newcommand{\subf}{}
+% ==============
+% style and layout
+% ==============
+\newcommand{\spacedhrule}{%
+	\vspace{0.2\baselineskip}
+	\hrule
+	\vspace{0.2\baselineskip}
+}
+\newcommand{\fspacedhrule}{%
+	\vspace{12pt}
+	\hrule
+	\vspace{12pt}
+}
+% paragraph title with linebreak
+% the starred variant will never show up in the TOC, the non-starred one may, if tocnumdepth is high enough
+\makeatletter
+\def\lbpar{\@ifstar\@lbpar\@starredlbpar}
+\def\@lbpar#1{%
+	\paragraph{#1}\mbox{}\medskip
+}
+\def\@starredlbpar#1{%
+	\paragraph*{#1}\mbox{}\medskip
+}
+\makeatother
+% shortcuts
+\newcommand{\hms}{\textup{\mdseries\ensuremath{\textsf{hms}\!^{+\!+}}}}
+% \newcommand{\hms}{\mdseries{}\sffamily{}hms\ensuremath{\!^{+\!+}}\,}
+
+\definecolor{semilightgray}{gray}{0.6}
+% todo list
+\newlist{todolist}{itemize}{5}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\canceled}{\rlap{$\square$}{\color{lightgray}\large\hspace{1pt}\xmark}}
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\color{PineGreen}\large\hspace{1pt}\cmark}}\hspace{-2.5pt}}
+\newcommand{\doing}{\hspace{-2.5pt}\rlap{$\square$}{\raisebox{2pt}{\color{Peach}\large\hspace{-4pt}\ding{244}}}\hspace{2.5pt}}
+\newcommand{\itemtodo}[1]{\item {\color{semilightgray} #1}}
+\newcommand{\itemcanceled}[1]{\item[\canceled] {\color{lightgray} \sout{#1}}}
+\newcommand{\itemdoing}[1]{\item[\doing] {\color{Peach} #1}}
+\newcommand{\itemdone}[1]{\item[\done] {\color{PineGreen} #1}}
+\newcommand{\note}[1]{{\color{Peach} #1}}
+% hyperref modifications
+\newcommand{\algorithmautorefname}{Algorithm}
+\addto\extrasenglish{%
+  % \def\subsectionautorefname{Unterkapitel}%
+  \def\sectionautorefname{Section}
+	\def\subsectionautorefname{Section}
+  \def\subsubsectionautorefname{Section}
+}

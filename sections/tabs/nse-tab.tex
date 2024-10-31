@@ -1,0 +1,17 @@
+\sisetup{
+  table-format=1.6,
+}
+
+\begin{tabular}{rc*{2}{S[round-precision=6, round-mode=places]}c*{2}{S[round-precision=6, round-mode=places]}} 
+  \toprule
+  &  & \multicolumn{2}{c}{first-order reconstruction} & & \multicolumn{2}{c}{\gls{tvd} reconstruction} \\
+  \cmidrule(r){3-4} \cmidrule(r){6-7}
+          &  & {\gls{gts}} & {\gls{lts}} &  & {\gls{gts}} & {\gls{lts}} \\
+  \midrule
+  $d$ wet &  & 0.998121725 & 0.998121745 &  & 0.999048143 & 0.999048143 \\
+  $v$ wet &  & 0.989963481 & 0.989963645 &  & 0.993198985 & 0.993198985 \\
+  \midrule
+  $d$ dry &  & 0.999629393 & 0.999629424 &  & 0.999974986 & 0.999974987 \\
+  $v$ dry &  & 0.849061523 & 0.848888537 &  & 0.962224377 & 0.962224377 \\
+  \bottomrule
+\end{tabular}

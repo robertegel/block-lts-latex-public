@@ -1,0 +1,31 @@
+\sisetup{
+  table-format=3.2,
+}
+
+\begin{tabular}{
+  r
+  % *{2}{S[round-mode=places,round-precision=1,table-space-text-post={\,s}]<{\,s}}
+  % *{2}{S[round-mode=places,round-precision=1,table-format=2.1,table-space-text-post={\,\%}]<{\,\%}}
+  % *{2}{S[round-mode=places,round-precision=1,table-space-text-post={\,s}]<{\,s}}
+  % *{2}{S[round-mode=places,round-precision=1,table-format=2.1,table-space-text-post={\,\%}]<{\,\%}}
+  *{2}{S[round-mode=places,round-precision=1]}
+  *{2}{S[round-mode=places,round-precision=1,table-format=2.1]}
+  *{2}{S[round-mode=places,round-precision=1]}
+  *{2}{S[round-mode=places,round-precision=1,table-format=2.1]}
+  }
+
+  \toprule
+   &  \multicolumn{4}{c}{first-order reconstruction} &  \multicolumn{4}{c}{\gls{tvd} reconstruction}                                                                                                                           \\
+  \cmidrule(r){2-5} \cmidrule(r){6-9}
+
+  % var0-base-dambreak_wet_0.6s_64x64_2000_gts_fo
+
+                                      % &  \mc{\gls{gts}} & \mc{\gls{lts}} & \mc{\acrshort{rtr}} & \mc{\acrshort{ssc}} &  \mc{\gls{gts}} & \mc{\gls{lts}} & \mc{\acrshort{rtr}} & \mc{\acrshort{ssc}} \\
+                                      & \mc{\gls{gts}\,[\si\second]} & \mc{\gls{lts}\,[\si\second]} & \mc{\acrshort{rtr}\,[\si\percent]} & \mc{\acrshort{ssc}\,[\si\percent]} & \mc{\gls{gts}\,[\si\second]} & \mc{\gls{lts}\,[\si\second]} & \mc{\acrshort{rtr}\,[\si\percent]} & \mc{\acrshort{ssc}\,[\si\percent]} \\
+  \midrule
+  $t = \SI{600}{\second}$  &  83.749         & 80.979         &  3.31               & 0.3187541463954003  &  179.49         & 147.96         &  17.57              & 24.642297705028334  \\
+  $t = \SI{1200}{\second}$ &  357.29         & 350.39         &  1.93               & 3.881321355386417   &  560.28         & 521.83         &  6.86               & 18.201279123084777  \\
+  $t = \SI{3600}{\second}$ &  2639.3         & 2057.1         &  22.06              & 32.24307031761723                                                                                   \\
+  \bottomrule
+\end{tabular}
+
