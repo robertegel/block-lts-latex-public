@@ -1,0 +1,3 @@
+[submodule "typst/heatmaps"]
+	path = typst/heatmaps
+	url = git@github.com:robertegel/block-lts-heatmaps.git
